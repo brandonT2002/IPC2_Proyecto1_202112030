@@ -16,6 +16,7 @@ class Read:
             cell = samples[4]
             for livingCell in cell:
                 print(f'F: {livingCell[0].text} C: {livingCell[1].text}')
+                print(f'Código Org: {livingCell[2].text}')
             print()
 
 read = Read()

@@ -102,17 +102,17 @@
                 <celdaViva>
                     <fila>7</fila>
                     <columna>8</columna>
-                    <codigoOrganismo>3</codigoOrganismo>
+                    <codigoOrganismo>4</codigoOrganismo>
                 </celdaViva>
                 <celdaViva>
                     <fila>8</fila>
                     <columna>9</columna>
-                    <codigoOrganismo>3</codigoOrganismo>
+                    <codigoOrganismo>4</codigoOrganismo>
                 </celdaViva>
                 <celdaViva>
                     <fila>9</fila>
                     <columna>10</columna>
-                    <codigoOrganismo>3</codigoOrganismo>
+                    <codigoOrganismo>4</codigoOrganismo>
                 </celdaViva>
             </listadoCeldasVivas>
         </muestra>
