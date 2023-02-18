@@ -1,18 +1,19 @@
-class Sample:
-    def __init__(self,code,description,row,column,liveCells):
-        self.code = code
-        self.description = description
-        self.row = row
-        self.column = column
-        self.liveCells = liveCells
-
+from Nodes.LinkedListCell import LinkedListCell
 class Organism:
     def __init__(self,code,name):
         self.code = code
         self.name = name
 
-class Cell:
-    def __init__(self,row,column,type):
+class Sample:
+    def __init__(self,code,description,row,column):
+        self.code = code
+        self.description = description
         self.row = row
         self.column = column
-        self.type = type
+        self.liveCells : LinkedListCell = LinkedListCell()
+
+class Cell:
+    def __init__(self,row,column,organism):
+        self.row = row
+        self.column = column
+        self.organism : Organism = organism

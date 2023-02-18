@@ -19,3 +19,10 @@ class LinkedListOrganism:
         while self.current:
             print(f'Code: {self.current.organism.code} Name: {self.current.organism.name}')
             self.current = self.current.next
+
+    def validateStatement(self,code):
+        self.current = self.first
+        while self.current:
+            if self.current.organism.code == code:
+                return self.current.organism.code
+            self.current = self.current.next

@@ -16,5 +16,5 @@ class LinkedListCell:
     def iterateList(self):
         self.current = self.first
         while self.current:
-            print(self.current.cell.row,self.current.cell.column,self.current.cell.type)
+            print(self.current.cell.row,self.current.cell.column,self.current.cell.organism)
             self.current = self.current.next
