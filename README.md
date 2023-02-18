@@ -1,3 +1,3 @@
 # Proyecto 1 - IPC2
-Brandon Andy Jefferson tejaxún Pichiyá
+Brandon Andy Jefferson Tejaxún Pichiyá
 202112030
