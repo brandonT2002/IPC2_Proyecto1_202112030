@@ -17,4 +17,5 @@ class LinkedListOrganism:
     def iterateList(self):
         self.current = self.first
         while self.current:
-            print(self.current.organism.code,self.current.organism.name)
+            print(f'Code: {self.current.organism.code} Name: {self.current.organism.name}')
+            self.current = self.current.next
