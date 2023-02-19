@@ -2,8 +2,12 @@ import xml.etree.ElementTree as ET
 from Nodes.LinkedListOrganism import LinkedListOrganism
 from Nodes.LinkedListSample import LinkedListSample
 from Nodes.Organism import Cell,Sample,Organism
+from Matrix.Matrix import Matrix
 
 class Read:
+    def __init__(self) -> None:
+        self.m = Matrix()
+
     def readFile(self,routeFile):
         self.tree = ET.parse(routeFile)
         self.root = self.tree.getroot()
@@ -20,6 +24,7 @@ class Read:
             cell = samples[4]
             for livingCell in cell:
                 llSamp.last.sample.liveCells.insertCell(Cell(livingCell[0].text,livingCell[1].text,llOrg.validateStatement(livingCell[2].text)))
+                self.m.insert(int(livingCell[0].text),int(livingCell[1].text),int(llOrg.validateStatement(livingCell[2].text)))
         return llSamp
 
 read = Read()
@@ -29,3 +34,5 @@ llOrg : LinkedListOrganism = read.getOrganismList(LinkedListOrganism())
 llOrg.iterateList()
 llSamp : LinkedListSample = read.getSamplesList(LinkedListSample(),llOrg)
 llSamp.iterateList()
+
+read.m.printMatrix()
