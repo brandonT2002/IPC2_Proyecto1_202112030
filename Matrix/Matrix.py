@@ -15,7 +15,7 @@ class Matrix:
         if column > self.lastC:
             for i in range(self.lastC,column):
                 self.column.insertNode(i)
-        if row < self.lastR and column < self.lastC:
+        if row <= self.lastR and column <= self.lastC:
             self.__addNodeE(row,column,value)
         elif row >= self.lastR and column < self.lastC:
             self.__addNode(self.lastR,row,0,self.lastC,row,column,value)
