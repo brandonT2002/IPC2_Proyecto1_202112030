@@ -1,8 +1,8 @@
-from HeaderNode import HeaderNode
+from Matrix.HeaderNode import HeaderNode
 
 class HeaderList:
     def __init__(self):
-        self.fist = None
+        self.first = None
         self.last = None
 
     def insertNode(self,index):

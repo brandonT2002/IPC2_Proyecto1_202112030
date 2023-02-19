@@ -3,7 +3,7 @@ class InternalNode:
         self.row = row
         self.column = column
         self.value = 0
-        self.up = None
-        self.down = None
-        self.left = None
-        self.right = None
+        self.up : InternalNode = None
+        self.down : InternalNode = None
+        self.left : InternalNode = None
+        self.right: InternalNode = None

@@ -1,3 +1,3 @@
 #!/bin/bash
     clear
-    python readFile.py
+    python Main.py
