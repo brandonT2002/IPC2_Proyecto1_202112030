@@ -91,5 +91,17 @@ class Matrix:
                 currentC = currentC.right
             matrix += '\n'
             currentR = currentR.next
-
+        
         print(matrix)
+    
+    def clone(self):
+        m = Matrix()
+        currentR : HeaderNode = self.row.first
+        currentC : InternalNode
+        while currentR:
+            currentC = currentR.access
+            while currentC:
+                m.insert(currentC.row + 1,currentC.column + 1,currentC.value)
+                currentC = currentC.right
+            currentR = currentR.next
+        return m
