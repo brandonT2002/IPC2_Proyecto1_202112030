@@ -10,9 +10,17 @@ class Algorithm:
         return matrix.clone()
     
     def lastCell_R(self,node : InternalNode, idOrganism):
-        if node != None and node.value != 0 and node.value != idOrganism:
+        if node != None and node.value != 0:
             if node.right != None and node.right.value != idOrganism:
                 return self.lastCell_R(node.right,idOrganism)
+            else:
+                return InternalNode(node.row, node.column)
+        return None
+    
+    def lastCell_L(self,node : InternalNode, idOrganism):
+        if node != None and node.value != 0:
+            if node.left != None and node.left.value != idOrganism:
+                return self.lastCell_L(node.left,idOrganism)
             else:
                 return InternalNode(node.row, node.column)
         return None
