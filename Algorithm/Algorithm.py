@@ -24,3 +24,11 @@ class Algorithm:
             else:
                 return InternalNode(node.row, node.column)
         return None
+    
+    def lastCell_U(self,node : InternalNode, idOrganism):
+        if node != None and node.value != 0:
+            if node.up != None and node.up.value != idOrganism:
+                return self.lastCell_U(node.up,idOrganism)
+            else:
+                return InternalNode(node.row, node.column)
+        return None
