@@ -43,7 +43,7 @@ class Algorithm:
     
     def lastCell_UR(self,node : InternalNode, idOrganism):
         if node != None and node.value != 0:
-            if node.up.right != None and node.up.right.value != idOrganism:
+            if node.up != None and node.up.right != None and node.up.right.value != idOrganism:
                 return self.lastCell_UR(node.up.right,idOrganism)
             else:
                 return InternalNode(node.row, node.column)
@@ -51,7 +51,7 @@ class Algorithm:
     
     def lastCell_UL(self,node : InternalNode, idOrganism):
         if node != None and node.value != 0:
-            if node.up.left != None and node.up.left.value != idOrganism:
+            if node.up != None and node.up.left != None and node.up.left.value != idOrganism:
                 return self.lastCell_UL(node.up.left,idOrganism)
             else:
                 return InternalNode(node.row, node.column)
@@ -59,8 +59,16 @@ class Algorithm:
     
     def lastCell_DR(self,node : InternalNode, idOrganism):
         if node != None and node.value != 0:
-            if node.down.right != None and node.down.right.value != idOrganism:
+            if node.down != None and node.down.right != None and node.down.right.value != idOrganism:
                 return self.lastCell_DR(node.down.right,idOrganism)
+            else:
+                return InternalNode(node.row, node.column)
+        return None
+    
+    def lastCell_DL(self,node : InternalNode, idOrganism):
+        if node != None and node.value != 0:
+            if node.down != None and node.down.left != None and node.down.left.value != idOrganism:
+                return self.lastCell_DL(node.down.left,idOrganism)
             else:
                 return InternalNode(node.row, node.column)
         return None
