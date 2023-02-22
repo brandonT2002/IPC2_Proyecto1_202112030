@@ -48,3 +48,11 @@ class Algorithm:
             else:
                 return InternalNode(node.row, node.column)
         return None
+    
+    def lastCell_UL(self,node : InternalNode, idOrganism):
+        if node != None and node.value != 0:
+            if node.up.left != None and node.up.left.value != idOrganism:
+                return self.lastCell_UL(node.up.left,idOrganism)
+            else:
+                return InternalNode(node.row, node.column)
+        return None
