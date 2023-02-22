@@ -32,3 +32,11 @@ class Algorithm:
             else:
                 return InternalNode(node.row, node.column)
         return None
+    
+    def lastCell_D(self,node : InternalNode, idOrganism):
+        if node != None and node.value != 0:
+            if node.down != None and node.down.value != idOrganism:
+                return self.lastCell_D(node.down,idOrganism)
+            else:
+                return InternalNode(node.row, node.column)
+        return None
