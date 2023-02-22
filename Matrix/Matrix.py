@@ -80,6 +80,31 @@ class Matrix:
                 currentC.last = node
             currentC = currentC.next
 
+    def clone(self):
+        m = Matrix()
+        currentR : HeaderNode = self.row.first
+        currentC : InternalNode
+        while currentR:
+            currentC = currentR.access
+            while currentC:
+                m.insert(currentC.row + 1,currentC.column + 1,currentC.value)
+                currentC = currentC.right
+            currentR = currentR.next
+        return m
+    
+    def searchNode(self,row,column) -> InternalNode:
+        currentR : HeaderNode = self.row.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index == row:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column == column:
+                        return currentC
+                    currentC = currentC.right
+            currentR = currentR.next
+        print('No se encontró nada')
+
     def printMatrix(self):
         currentR : HeaderNode = self.row.first
         currentC : InternalNode
@@ -93,15 +118,3 @@ class Matrix:
             currentR = currentR.next
         
         print(matrix)
-    
-    def clone(self):
-        m = Matrix()
-        currentR : HeaderNode = self.row.first
-        currentC : InternalNode
-        while currentR:
-            currentC = currentR.access
-            while currentC:
-                m.insert(currentC.row + 1,currentC.column + 1,currentC.value)
-                currentC = currentC.right
-            currentR = currentR.next
-        return m
