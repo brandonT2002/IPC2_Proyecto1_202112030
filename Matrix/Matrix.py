@@ -86,3 +86,15 @@ class SparseMatrix:
                 currentC = currentC.right
             print(w)
             currentR = currentR.next
+
+    def cloneMatrix(self):
+        m = SparseMatrix()
+        currentR : NodeH = self.accessR.first
+        currentC : NodeI
+        while currentR:
+            currentC = currentR.access
+            while currentC:
+                m.insert(currentC.row,currentC.column,currentC.number)
+                currentC = currentC.right
+            currentR = currentR.next
+        return m

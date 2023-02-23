@@ -1,19 +1,25 @@
 from Matrix.Matrix import SparseMatrix
-matrix = SparseMatrix()
-matrix.insert(2,3,5)
-matrix.insert(0,1,5)
-matrix.insert(1,2,5)
-matrix.insert(1,1,5)
+from Algorithm.Algorithm import Algorithm
+m = SparseMatrix()
+m.insert(4,4,1)
 
-matrix.insert(0,0,1)
-matrix.insert(0,2,1)
-matrix.insert(0,3,1)
+m.insert(4,5,2)
+m.insert(5,4,2)
+m.insert(5,5,2)
+m.insert(6,3,2)
+m.insert(6,4,2)
+m.insert(6,5,2)
 
-matrix.insert(1,0,1)
-matrix.insert(1,3,1)
+m.insert(7,9,3)
+m.insert(8,8,3)
+m.insert(9,9,3)
 
-matrix.insert(2,0,1)
-matrix.insert(2,1,1)
-matrix.insert(2,2,1)
+m.insert(7,8,4)
+m.insert(8,9,4)
+m.insert(9,10,4)
 
-matrix.print()
+m.print()
+
+a = Algorithm(m)
+print('\nClon')
+a.clon.print()
