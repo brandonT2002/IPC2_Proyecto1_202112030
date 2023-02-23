@@ -1,25 +1,25 @@
-from Matrix.HeaderNode import NodeH
+from Matrix.HeaderNode import HeaderNode
 
 class HeaderList:
     def __init__(self):
-        self.first : NodeH = None
-        self.last : NodeH = None
+        self.first : HeaderNode = None
+        self.last : HeaderNode = None
 
     def add(self,index):
         if self.first:
             if index < self.first.index:
-                self.first.previous = NodeH(index)
+                self.first.previous = HeaderNode(index)
                 self.first.previous.next = self.first
                 self.first = self.first.previous
             elif index > self.last.index:
-                self.last.next = NodeH(index)
+                self.last.next = HeaderNode(index)
                 self.last.next.previous = self.last
                 self.last = self.last.next
             else:
                 current = self.first
                 while current.next:
                     if index > current.index and index < current.next.index:
-                        tmp = NodeH(index)
+                        tmp = HeaderNode(index)
                         tmp.previous = current
                         tmp.next = current.next
 
@@ -29,7 +29,7 @@ class HeaderList:
 
                     current = current.next
             return
-        self.first = NodeH(index)
+        self.first = HeaderNode(index)
         self.last = self.first
 
     def isHearIndex(self,index):

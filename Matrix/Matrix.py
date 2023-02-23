@@ -1,22 +1,22 @@
 from Matrix.HeaderList import HeaderList
-from Matrix.InternalNode import NodeI
-from Matrix.HeaderNode import NodeH
+from Matrix.InternalNode import InternalNode
+from Matrix.HeaderNode import HeaderNode
 
 class SparseMatrix:
     def __init__(self):
         self.accessR = HeaderList()
         self.accessC = HeaderList()
 
-    def insert(self,row,column,number):
+    def insert(self,row,column,value):
         if not self.accessR.isHearIndex(row):
             self.accessR.add(row)
         if not self.accessC.isHearIndex(column):
             self.accessC.add(column)
-        node = NodeI(row,column,number)
+        node = InternalNode(row,column,value)
         self.addRow(row,node)
         self.addColumn(column,node)
 
-    def addRow(self,row,node : NodeI):
+    def addRow(self,row,node : InternalNode):
         currentR = self.accessR.first
         while currentR:
             if currentR.index == row:
@@ -46,7 +46,7 @@ class SparseMatrix:
                 return
             currentR = currentR.next
 
-    def addColumn(self,column,node : NodeI):
+    def addColumn(self,column,node : InternalNode):
         currentC = self.accessC.first
         while currentC:
             if currentC.index == column:
@@ -82,19 +82,19 @@ class SparseMatrix:
             currentC = currentR.access
             w = ''
             while currentC:
-                w += f'{currentC.number} '
+                w += f'{currentC.value} '
                 currentC = currentC.right
             print(w)
             currentR = currentR.next
 
     def cloneMatrix(self):
         m = SparseMatrix()
-        currentR : NodeH = self.accessR.first
-        currentC : NodeI
+        currentR : HeaderNode = self.accessR.first
+        currentC : InternalNode
         while currentR:
             currentC = currentR.access
             while currentC:
-                m.insert(currentC.row,currentC.column,currentC.number)
+                m.insert(currentC.row,currentC.column,currentC.value)
                 currentC = currentC.right
             currentR = currentR.next
         return m

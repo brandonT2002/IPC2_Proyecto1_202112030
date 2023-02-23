@@ -18,8 +18,13 @@ m.insert(7,8,4)
 m.insert(8,9,4)
 m.insert(9,10,4)
 
+print('\nOriginal')
 m.print()
 
 a = Algorithm(m)
 print('\nClon')
 a.clon.print()
+
+print('\nNuevo')
+m.insert(4,6,1)
+m.print()
