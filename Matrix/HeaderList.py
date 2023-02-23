@@ -1,40 +1,41 @@
-from Matrix.HeaderNode import HeaderNode
+from Matrix.HeaderNode import NodeH
 
 class HeaderList:
     def __init__(self):
-        self.first = None
-        self.last = None
+        self.first : NodeH = None
+        self.last : NodeH = None
 
-    def insertNode(self,index):
+    def add(self,index):
         if self.first:
             if index < self.first.index:
-                self.first.prev = HeaderNode(index)
-                self.first.prev.next = self.first
-                self.first = self.first.prev
+                self.first.previous = NodeH(index)
+                self.first.previous.next = self.first
+                self.first = self.first.previous
             elif index > self.last.index:
-                self.last.next = HeaderNode(index)
-                self.last.next.prev = self.last
+                self.last.next = NodeH(index)
+                self.last.next.previous = self.last
                 self.last = self.last.next
             else:
                 current = self.first
                 while current.next:
                     if index > current.index and index < current.next.index:
-                        temp = HeaderNode(index)
-                        temp.prev = current
-                        temp.next = current.next
+                        tmp = NodeH(index)
+                        tmp.previous = current
+                        tmp.next = current.next
 
-                        current.next.prev = temp
-                        current.next = temp
+                        current.next.previous = tmp
+                        current.next = tmp
                         return
+
                     current = current.next
             return
-        self.first = HeaderNode(index)
+        self.first = NodeH(index)
         self.last = self.first
 
     def isHearIndex(self,index):
         if self.first:
             current = self.first
-            while current:
+            while(current):
                 if current.index == index:
                     return True
                 current = current.next
@@ -43,7 +44,7 @@ class HeaderList:
     def print(self):
         current = self.first
         w = ''
-        while current:
+        while(current):
             w += f'{current.index}'
             current = current.next
         print(w)

@@ -1,120 +1,88 @@
 from Matrix.HeaderList import HeaderList
-from Matrix.InternalNode import InternalNode
-from Matrix.HeaderNode import HeaderNode
-class Matrix:
+from Matrix.InternalNode import NodeI
+from Matrix.HeaderNode import NodeH
+
+class SparseMatrix:
     def __init__(self):
-        self.row = HeaderList()
-        self.column = HeaderList()
-        self.lastR = 0
-        self.lastC = 0
+        self.accessR = HeaderList()
+        self.accessC = HeaderList()
 
-    def insert(self,row : int,column : int,value : int):
-        if row > self.lastR:
-            for i in range(self.lastR,row):
-                self.row.insertNode(i)
-        if column > self.lastC:
-            for i in range(self.lastC,column):
-                self.column.insertNode(i)
-        if row <= self.lastR and column <= self.lastC:
-            self.__addNodeE(row,column,value)
-        elif row >= self.lastR and column < self.lastC:
-            self.__addNode(self.lastR,row,0,self.lastC,row,column,value)
-        elif self.lastR * self.lastC == 0:
-            self.__addNode(0,row,0,column,row,column,value)
-        else:
-            self.__addNode(0,self.lastR,self.lastC,column,row,column,value)
-            self.__addNode(self.lastR,row,0,column,row,column,value)
+    def insert(self,row,column,number):
+        if not self.accessR.isHearIndex(row):
+            self.accessR.add(row)
+        if not self.accessC.isHearIndex(column):
+            self.accessC.add(column)
+        node = NodeI(row,column,number)
+        self.addRow(row,node)
+        self.addColumn(column,node)
 
-        if row > self.lastR:
-            self.lastR = row
-        if column > self.lastC:
-            self.lastC = column
-
-
-    def __addNode(self,r0,r1,c0,c1,row,column,value):
-        node = None
-        for i in range(r0,r1):
-            for j in range(c0,c1):
-                node = InternalNode(i,j)
-                if i == row -1 and j == column -1:
-                    node.value = value
-                self.__addR(i,node)
-                self.__addC(j,node)
-
-    def __addNodeE(self,row,column,value):
-        currentR : HeaderNode = self.row.first
-        currentC : InternalNode
-        while currentR:
-            if currentR.index == row - 1:
-                currentC = currentR.access
-                while currentC:
-                    if currentC.column == column - 1:
-                        currentC.value = value
-                        return
-                    currentC = currentC.right
-            currentR = currentR.next
-
-    def __addR(self,row,node : InternalNode):
-        currentR : HeaderNode = self.row.first
+    def addRow(self,row,node : NodeI):
+        currentR = self.accessR.first
         while currentR:
             if currentR.index == row:
                 if currentR.access:
-                    currentR.last.right = node
-                    currentR.last.right.left = currentR.last
-                    currentR.last = currentR.last.right
+                    if node.column < currentR.access.column:
+                        currentR.access.left = node
+                        currentR.access.left.right = currentR.access
+                        currentR.access = currentR.access.left
+                    elif node.column > currentR.last.column:
+                        currentR.last.right = node
+                        currentR.last.right.left = currentR.last
+                        currentR.last = currentR.last.right
+                    else:
+                        currentC = currentR.access
+                        while currentC.right:
+                            if node.column > currentC.column and node.column < currentC.right.column:
+                                node.left = currentC
+                                node.right = currentC.right
+
+                                currentC.right.left = node
+                                currentC.right = node
+                                return
+                            currentC = currentC.right
                     return
                 currentR.access = node
-                currentR.last = node
+                currentR.last = currentR.access
+                return
             currentR = currentR.next
 
-    def __addC(self,column,node : InternalNode):
-        currentC : HeaderNode = self.column.first
+    def addColumn(self,column,node : NodeI):
+        currentC = self.accessC.first
         while currentC:
             if currentC.index == column:
                 if currentC.access:
-                    currentC.last.down = node
-                    currentC.last.down.up = currentC.last
-                    currentC.last = currentC.last.down
+                    if node.row < currentC.access.row:
+                        currentC.access.up = node
+                        currentC.access.up.down = currentC.access
+                        currentC.access = currentC.access.up
+                    elif node.row > currentC.last.row:
+                        currentC.last.down = node
+                        currentC.last.down.up = currentC.last
+                        currentC.last = currentC.last.down
+                    else:
+                        currentR = currentC.access
+                        while currentR.down:
+                            if node.row > currentR.row and node.row < currentR.down.row:
+                                node.up = currentR
+                                node.down = currentR.down
+
+                                currentR.down.up = node
+                                currentR.down = node
+                                return
+                            currentR = currentR.down
                     return
                 currentC.access = node
-                currentC.last = node
+                currentC.last = currentC.access
+                return
             currentC = currentC.next
 
-    def clone(self):
-        m = Matrix()
-        currentR : HeaderNode = self.row.first
-        currentC : InternalNode
+    def print(self) :
+        currentR = self.accessR.first
         while currentR:
             currentC = currentR.access
+            w = ''
             while currentC:
-                m.insert(currentC.row + 1,currentC.column + 1,currentC.value)
+                w += f'{currentC.number} '
                 currentC = currentC.right
+            print(w)
             currentR = currentR.next
-        return m
-    
-    def searchNode(self,row,column) -> InternalNode:
-        currentR : HeaderNode = self.row.first
-        currentC : InternalNode
-        while currentR:
-            if currentR.index == row:
-                currentC = currentR.access
-                while currentC:
-                    if currentC.column == column:
-                        return currentC
-                    currentC = currentC.right
-            currentR = currentR.next
-        print('No se encontró nada')
-
-    def printMatrix(self):
-        currentR : HeaderNode = self.row.first
-        currentC : InternalNode
-        matrix = ''
-        while currentR:
-            currentC = currentR.access
-            while currentC:
-                matrix += str(currentC.value)
-                currentC = currentC.right
-            matrix += '\n'
-            currentR = currentR.next
-        
-        print(matrix)
