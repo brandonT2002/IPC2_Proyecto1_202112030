@@ -1,5 +1,5 @@
 from Matrix.Matrix import SparseMatrix
-from Matrix.InternalNode import NodeI
+from Matrix.InternalNode import InternalNode
 
 class Algorithm:
     def __init__(self,matrix):
@@ -9,66 +9,45 @@ class Algorithm:
     def clone(self,matrix : SparseMatrix) -> SparseMatrix:
         return matrix.cloneMatrix()
     
-    def lastCell_R(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.right != None and node.right.value != idOrganism:
+    def lastCell_R(self,node : InternalNode, idOrganism):
+        if node != None and node.value != idOrganism:
+            if node.right != None and node.column == node.right.column - 1:
+                if node.right.value != idOrganism:
+                    return self.lastCell_R(node.right,idOrganism)
+                if node.right.value == idOrganism:
+                    temporal = self.lastCell_R(node.right,idOrganism)
+                    if temporal == None:
+                        return InternalNode(node.row,node.column,node.value)
+                    return temporal
+        if node != None and node.value == idOrganism:
+            if node.right != None and node.column == node.right.column - 1:
                 return self.lastCell_R(node.right,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
         return None
     
-    def lastCell_L(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.left != None and node.left.value != idOrganism:
-                return self.lastCell_L(node.left,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
+    def lastCell_L(self,node : InternalNode, idOrganism):
+        
         return None
     
-    def lastCell_U(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.up != None and node.up.value != idOrganism:
-                return self.lastCell_U(node.up,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
+    def lastCell_U(self,node : InternalNode, idOrganism):
+        
         return None
     
-    def lastCell_D(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.down != None and node.down.value != idOrganism:
-                return self.lastCell_D(node.down,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
+    def lastCell_D(self,node : InternalNode, idOrganism):
+        
         return None
     
-    def lastCell_UR(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.up != None and node.up.right != None and node.up.right.value != idOrganism:
-                return self.lastCell_UR(node.up.right,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
+    def lastCell_UR(self,node : InternalNode, idOrganism):
+        
         return None
     
-    def lastCell_UL(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.up != None and node.up.left != None and node.up.left.value != idOrganism:
-                return self.lastCell_UL(node.up.left,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
+    def lastCell_UL(self,node : InternalNode, idOrganism):
+        
         return None
     
-    def lastCell_DR(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.down != None and node.down.right != None and node.down.right.value != idOrganism:
-                return self.lastCell_DR(node.down.right,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
+    def lastCell_DR(self,node : InternalNode, idOrganism):
+        
         return None
     
-    def lastCell_DL(self,node : NodeI, idOrganism):
-        if node != None and node.value != 0:
-            if node.down != None and node.down.left != None and node.down.left.value != idOrganism:
-                return self.lastCell_DL(node.down.left,idOrganism)
-            else:
-                return NodeI(node.row, node.column)
+    def lastCell_DL(self,node : InternalNode, idOrganism):
+        
         return None
