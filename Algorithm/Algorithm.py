@@ -124,5 +124,19 @@ class Algorithm:
         return None
     
     def lastCell_DL(self, row, column, idOrganism):
-        
+        node = self.matrix.searchNode(row,column)
+        if node != None and node.value != idOrganism:
+            node = self.matrix.searchNode(row + 1, column - 1)
+            if node != None:
+                if node.value != idOrganism:
+                    return self.lastCell_DL(row + 1, column - 1, idOrganism)
+                if node.value == idOrganism:
+                    temp = self.lastCell_DL(row + 1, column - 1, idOrganism)
+                    if temp == None:
+                        return InternalNode(row,column,node.value)
+                    return temp
+        if node != None and node.value == idOrganism:
+            node = self.matrix.searchNode(row + 1, column - 1)
+            if node != None:
+                return self.lastCell_DL(row + 1, column - 1, idOrganism)
         return None
