@@ -15,17 +15,28 @@ class Algorithm:
                 if node.right.value != idOrganism:
                     return self.lastCell_R(node.right,idOrganism)
                 if node.right.value == idOrganism:
-                    temporal = self.lastCell_R(node.right,idOrganism)
-                    if temporal == None:
+                    temp = self.lastCell_R(node.right,idOrganism)
+                    if temp == None:
                         return InternalNode(node.row,node.column,node.value)
-                    return temporal
+                    return temp
         if node != None and node.value == idOrganism:
             if node.right != None and node.column == node.right.column - 1:
                 return self.lastCell_R(node.right,idOrganism)
         return None
     
     def lastCell_L(self,node : InternalNode, idOrganism):
-        
+        if node != None and node.value != idOrganism:
+            if node.left != None and node.column == node.left.column + 1:
+                if node.left.value != idOrganism:
+                    return self.lastCell_L(node.left,idOrganism)
+                if node.left.value == idOrganism:
+                    temp = self.lastCell_L(node.left,idOrganism)
+                    if temp == None:
+                        return InternalNode(node.row,node.column,node.value)
+                    return temp
+        if node != None and node.value == idOrganism:
+            if node.left != None and node.column == node.left.column + 1:
+                return self.lastCell_L(node.left,idOrganism)
         return None
     
     def lastCell_U(self,node : InternalNode, idOrganism):
