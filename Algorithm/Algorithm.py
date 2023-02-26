@@ -55,7 +55,18 @@ class Algorithm:
         return None
     
     def lastCell_D(self,node : InternalNode, idOrganism):
-        
+        if node != None and node.value != idOrganism:
+            if node.down != None and node.row == node.down.row - 1:
+                if node.down.value != idOrganism:
+                    return self.lastCell_D(node.down,idOrganism)
+                if node.down.value == idOrganism:
+                    temp = self.lastCell_D(node.down,idOrganism)
+                    if temp == None:
+                        return InternalNode(node.row,node.column,node.value)
+                    return temp
+        if node != None and node.value == idOrganism:
+            if node.down != None and node.row == node.down.row - 1:
+                return self.lastCell_D(node.down,idOrganism)
         return None
     
     def lastCell_UR(self,node : InternalNode, idOrganism):
