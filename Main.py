@@ -2,9 +2,9 @@ from Matrix.Matrix import SparseMatrix
 from Algorithm.Algorithm import Algorithm
 from Matrix.InternalNode import InternalNode
 m = SparseMatrix()
-m.insert(3,2,1)
-m.insert(4,3,2)
-m.insert(5,4,2)
+m.insert(7,6,2)
+m.insert(8,7,2)
+m.insert(9,8,1)
 
 print('\nOriginal')
 m.print()
@@ -38,8 +38,16 @@ column = -1
 # print('\nult pos')
 # print(row,column)
 
-if m.searchNode(node.row,node.column) != None and m.searchNode(node.row - 1,node.column - 1) != None:
-    last_D = a.lastCell_UL(node.row - 1,node.column - 1,node.value)
+# if m.searchNode(node.row,node.column) != None and m.searchNode(node.row - 1,node.column - 1) != None:
+#     last_D = a.lastCell_UL(node.row - 1,node.column - 1,node.value)
+#     if last_D:
+#         row = last_D.row
+#         column = last_D.column
+# print('\nult pos')
+# print(row,column)
+
+if m.searchNode(node.row,node.column) != None and m.searchNode(node.row + 1,node.column + 1) != None:
+    last_D = a.lastCell_DR(node.row + 1,node.column + 1,node.value)
     if last_D:
         row = last_D.row
         column = last_D.column
