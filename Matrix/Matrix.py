@@ -99,18 +99,6 @@ class SparseMatrix:
             print(w)
             currentR = currentR.next
 
-    def cloneMatrix(self):
-        m = SparseMatrix()
-        currentR : HeaderNode = self.accessR.first
-        currentC : InternalNode
-        while currentR:
-            currentC = currentR.access
-            while currentC:
-                m.insert(currentC.row,currentC.column,currentC.value)
-                currentC = currentC.right
-            currentR = currentR.next
-        return m
-
     def searchNode(self,row,column) -> InternalNode:
         currentR : HeaderNode = self.accessR.first
         currentC : InternalNode

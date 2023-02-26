@@ -1,14 +1,25 @@
 from Matrix.Matrix import SparseMatrix
 from Matrix.InternalNode import InternalNode
+from Matrix.HeaderNode import HeaderNode
 
 class Algorithm:
     def __init__(self,matrix):
         self.matrix : SparseMatrix = matrix
-        self.clon = self.clone(self.matrix)
 
-    def clone(self,matrix : SparseMatrix) -> SparseMatrix:
-        return matrix.cloneMatrix()
-    
+    def eatOrganisms_R(self,nodeI : InternalNode, nodeF : InternalNode, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first #self.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index == nodeI.row:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column <= nodeF.column:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
+    # detección de otros organismos en todas las direcciones
     def lastCell_R(self,node : InternalNode, idOrganism):
         if node != None and node.value != idOrganism:
             if node.right != None and node.column == node.right.column - 1:
