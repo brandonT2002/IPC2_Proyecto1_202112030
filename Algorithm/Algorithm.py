@@ -6,14 +6,53 @@ class Algorithm:
     def __init__(self,matrix):
         self.matrix : SparseMatrix = matrix
 
+    # métodos para comer organismos
     def eatOrganisms_R(self,nodeI : InternalNode, nodeF : InternalNode, idOrganism):
-        currentR : HeaderNode = self.matrix.accessR.first #self.accessR.first
+        currentR : HeaderNode = self.matrix.accessR.first
         currentC : InternalNode
         while currentR:
             if currentR.index == nodeI.row:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column <= nodeF.column:
+                    if currentC.column >= nodeI.column and currentC.column <= nodeF.column:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
+    def eatOrganisms_L(self,nodeI : InternalNode, nodeF : InternalNode, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index == nodeF.row:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column <= nodeI.column:
+                        currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
+    def eatOrganisms_U(self,nodeI : InternalNode, nodeF : InternalNode, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index >= nodeF.row and currentR.index <= nodeI.row:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column == nodeI.column:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
+    def eatOrganisms_D(self,nodeI : InternalNode, nodeF : InternalNode, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index >= nodeI.row and currentR.index <= nodeF.row:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column == nodeI.column:
                         if currentC.value != idOrganism:
                             currentC.value = idOrganism
                     currentC = currentC.right
