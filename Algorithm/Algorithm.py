@@ -58,6 +58,58 @@ class Algorithm:
                     currentC = currentC.right
             currentR = currentR.next
 
+    def eatOrganisms_UR(self, rowI, columnI, rowF, columnF, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index <= rowI and currentR.index >= rowF:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column >= columnI and currentC.column <= columnF:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
+    def eatOrganisms_UL(self, rowI, columnI, rowF, columnF, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index <= rowI and currentR.index >= rowF:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column <= columnI and currentC.column >= columnF:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
+    def eatOrganisms_DR(self, rowI, columnI, rowF, columnF, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index >= rowI and currentR.index <= rowF:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column >= columnI and currentC.column <= columnF:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
+    def eatOrganisms_DL(self, rowI, columnI, rowF, columnF, idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index >= rowI and currentR.index <= rowF:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column <= columnI and currentC.column >= columnF:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
+                    currentC = currentC.right
+            currentR = currentR.next
+
     # detección de otros organismos en todas las direcciones
     def lastCell_R(self,node : InternalNode, idOrganism):
         if node != None and node.value != idOrganism:
