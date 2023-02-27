@@ -48,9 +48,13 @@ class Menu:
             if option == 's':
                 x = int(input('PosX: '))
                 y = int(input('PosY: '))
-                print(f'Organismo agregado en {x},{y}')
+                value = int(input('Tipo de Organismo: '))
+                print()
+                self.read.m.insert(x,y,value)
+                self.read.m.print()
+                nodo = self.read.m.searchNode(x,y)
+                self.read.algorithm.evaluateToEat(nodo)
             elif option == 'n':
-                print('sale')
                 break
             else:
                 print('Opción invalida')

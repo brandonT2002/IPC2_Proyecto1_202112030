@@ -111,3 +111,24 @@ class SparseMatrix:
                     currentC = currentC.right
             currentR = currentR.next
         return None
+
+    def unbindNode(self,row,column):
+        currentR : HeaderNode = self.accessR.first
+        currentC : InternalNode
+        while currentR:
+            if currentR.index == row:
+                currentC = currentR.access
+                while currentC:
+                    if currentC.column == column:
+                        if currentC.right:
+                            currentC.right.left = None
+                        if currentC.left:
+                            currentC.left.right = None
+                        if currentC.down:
+                            currentC.down.up = None
+                        if currentC.up:
+                            currentC.up.down = None
+                        return True
+                    currentC = currentC.right
+            currentR = currentR.next
+        return False

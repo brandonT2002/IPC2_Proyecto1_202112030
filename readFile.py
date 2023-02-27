@@ -6,7 +6,7 @@ from Matrix.Matrix import SparseMatrix
 class Read:
     def __init__(self) -> None:
         self.m = SparseMatrix()
-        algorithm = Algorithm(self.m)
+        self.algorithm = Algorithm(self.m)
 
     def readFile(self,routeFile):
         self.tree = ET.parse(routeFile)
