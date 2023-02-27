@@ -14,7 +14,10 @@ class Algorithm:
             if currentR.index == nodeI.row:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column >= nodeI.column and currentC.column <= nodeF.column:
+                    if currentC.column == nodeF.column:
+                        currentC.value = idOrganism
+                        return
+                    if currentC.column > nodeI.column:
                         if currentC.value != idOrganism:
                             currentC.value = idOrganism
                     currentC = currentC.right
@@ -27,86 +30,110 @@ class Algorithm:
             if currentR.index == nodeF.row:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column <= nodeI.column:
-                        currentC.value = idOrganism
+                    if currentC.column == nodeI.column:
+                        return
+                    if currentC.column >= nodeF.column:
+                        if currentC.value != idOrganism:
+                            currentC.value = idOrganism
                     currentC = currentC.right
             currentR = currentR.next
 
     def eatOrganisms_U(self,nodeI : InternalNode, nodeF : InternalNode, idOrganism):
-        currentR : HeaderNode = self.matrix.accessR.first
-        currentC : InternalNode
-        while currentR:
-            if currentR.index >= nodeF.row and currentR.index <= nodeI.row:
-                currentC = currentR.access
-                while currentC:
-                    if currentC.column == nodeI.column:
-                        if currentC.value != idOrganism:
-                            currentC.value = idOrganism
-                    currentC = currentC.right
-            currentR = currentR.next
+        currentC : HeaderNode = self.matrix.accessC.first
+        currentR : InternalNode
+        while currentC:
+            if currentC.index == nodeF.column:
+                currentR = currentC.access
+                while currentR:
+                    if currentR.row == nodeI.row:
+                        return
+                    if currentR.row >= nodeF.row:
+                        if currentR.value != idOrganism:
+                            currentR.value = idOrganism
+                    currentR = currentR.down
+            currentC = currentC.next
 
     def eatOrganisms_D(self,nodeI : InternalNode, nodeF : InternalNode, idOrganism):
-        currentR : HeaderNode = self.matrix.accessR.first
-        currentC : InternalNode
-        while currentR:
-            if currentR.index >= nodeI.row and currentR.index <= nodeF.row:
-                currentC = currentR.access
-                while currentC:
-                    if currentC.column == nodeI.column:
-                        if currentC.value != idOrganism:
-                            currentC.value = idOrganism
-                    currentC = currentC.right
-            currentR = currentR.next
+        currentC : HeaderNode = self.matrix.accessC.first
+        currentR : InternalNode
+        while currentC:
+            if currentC.index == nodeI.column:
+                currentR = currentC.access
+                while currentR:
+                    if currentR.row == nodeF.row:
+                        currentR.value = idOrganism
+                        return
+                    if currentR.row > nodeI.row:
+                        if currentR.value != idOrganism:
+                            currentR.value = idOrganism
+                    currentR = currentR.down
+            currentC = currentC.next
 
     def eatOrganisms_UR(self, rowI, columnI, rowF, columnF, idOrganism):
         currentR : HeaderNode = self.matrix.accessR.first
         currentC : InternalNode
+        col = columnF
         while currentR:
-            if currentR.index <= rowI and currentR.index >= rowF:
+            if currentR.index >= rowF:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column >= columnI and currentC.column <= columnF:
+                    if currentC.column == col:
                         if currentC.value != idOrganism:
                             currentC.value = idOrganism
+                            col -= 1
+                        break
                     currentC = currentC.right
             currentR = currentR.next
+            if currentR.index == rowI:
+                return
 
     def eatOrganisms_UL(self, rowI, columnI, rowF, columnF, idOrganism):
         currentR : HeaderNode = self.matrix.accessR.first
         currentC : InternalNode
+        col = columnF
         while currentR:
-            if currentR.index <= rowI and currentR.index >= rowF:
+            if currentR.index >= rowF:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column <= columnI and currentC.column >= columnF:
+                    if currentC.column == col:
                         if currentC.value != idOrganism:
                             currentC.value = idOrganism
+                            col += 1
+                        break
                     currentC = currentC.right
             currentR = currentR.next
+            if currentR.index == rowI:
+                return
 
     def eatOrganisms_DR(self, rowI, columnI, rowF, columnF, idOrganism):
         currentR : HeaderNode = self.matrix.accessR.first
         currentC : InternalNode
+        col = columnI + 1
         while currentR:
-            if currentR.index >= rowI and currentR.index <= rowF:
+            if currentR.index > rowI and currentR.index <= rowF:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column >= columnI and currentC.column <= columnF:
+                    if currentC.column == col:
                         if currentC.value != idOrganism:
                             currentC.value = idOrganism
+                            col += 1
+                        break
                     currentC = currentC.right
             currentR = currentR.next
 
     def eatOrganisms_DL(self, rowI, columnI, rowF, columnF, idOrganism):
         currentR : HeaderNode = self.matrix.accessR.first
         currentC : InternalNode
+        col = columnI - 1
         while currentR:
-            if currentR.index >= rowI and currentR.index <= rowF:
+            if currentR.index > rowI and currentR.index <= rowF:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column <= columnI and currentC.column >= columnF:
+                    if currentC.column == col:
                         if currentC.value != idOrganism:
                             currentC.value = idOrganism
+                            col -= 1
+                        break
                     currentC = currentC.right
             currentR = currentR.next
 
