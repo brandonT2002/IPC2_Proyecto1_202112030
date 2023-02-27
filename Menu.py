@@ -8,6 +8,7 @@ class Menu:
         self.read = Read()
 
     def menu(self):
+        file = False
         while True:
             print()
             self.options()
@@ -24,8 +25,16 @@ class Menu:
                     except:
                         print('Ocurrió un error :(')
                 elif option == '2':
-                    self.read.m.print()
+                    print('opcion2')
                 elif option == '3':
+                    if file:
+                        self.read.m.print()
+                        self.addOrganism()
+                    else:
+                        print('No se ha cargado ningún archivo')
+                elif option == '4':
+                    print('opcion4')
+                elif option == '5':
                     print('¡Hasta pronto!')
                     break
                 else:
@@ -33,13 +42,28 @@ class Menu:
             else:
                 print('Ingrese solo números')
 
+    def addOrganism(self):
+        while True:
+            option = input('\nDesea ingresar un orgamismo (s/n)? ')
+            if option == 's':
+                x = int(input('PosX: '))
+                y = int(input('PosY: '))
+                print(f'Organismo agregado en {x},{y}')
+            elif option == 'n':
+                print('sale')
+                break
+            else:
+                print('Opción invalida')
+
     def options(self):
         print('╔════════════════════════════════════════════════════════════╗')
         print('║                                                            ║')
         print('║                       MENÚ PRINCIPAL                       ║')
-        print('║                    1. Cargar Archivo                       ║')
-        print('║                    2. Ver Muestras                         ║')
-        print('║                    3. Salir                                ║')
+        print('║                  1. Cargar Archivo                         ║')
+        print('║                  2. ¿Dónde Puede Prosperar?                ║')
+        print('║                  3. Colocar Organismos                     ║')
+        print('║                  4. ¿Puéde Prosperar?                      ║')
+        print('║                  5. Salir                                  ║')
         print('║                                                            ║')
         print('╚════════════════════════════════════════════════════════════╝')
 
