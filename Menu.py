@@ -1,7 +1,11 @@
+import easygui as eg
+from readFile import Read
+from Nodes.LinkedListOrganism import LinkedListOrganism
+from Nodes.LinkedListSample import LinkedListSample
+
 class Menu:
     def __init__(self):
-        #self.read = Read()
-        pass
+        self.read = Read()
 
     def menu(self):
         while True:
@@ -12,11 +16,15 @@ class Menu:
             if option.isdigit():
                 if option == '1':
                     try:
-                        print('opcion1')
+                        file = eg.fileopenbox()
+                        self.read.readFile(file)
+                        llOrg : LinkedListOrganism = self.read.getOrganismList(LinkedListOrganism())
+                        llSamp : LinkedListSample = self.read.getSamplesList(LinkedListSample(),llOrg)
+                        print('Archivo cargado exitosamente')
                     except:
                         print('Ocurrió un error :(')
                 elif option == '2':
-                    print('opcion2')
+                    self.read.m.print()
                 elif option == '3':
                     print('¡Hasta pronto!')
                     break
