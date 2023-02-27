@@ -1,7 +1,8 @@
+from Matrix.InternalNode import InternalNode
 class HeaderNode:
     def __init__(self,index):
         self.index = index
-        self.next = None
-        self.prev = None
-        self.access = None
-        self.last = None
+        self.previous : HeaderNode = None
+        self.next : HeaderNode = None
+        self.access : InternalNode = None
+        self.last : InternalNode = None

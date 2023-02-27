@@ -1,9 +1,16 @@
 class InternalNode:
-    def __init__(self,row,column):
+    def __init__(self,row,column,value : int):
+        self.value = value
         self.row = row
         self.column = column
-        self.value = 0
-        self.up = None
-        self.down = None
-        self.left = None
-        self.right = None
+        self.right : InternalNode = None
+        self.left : InternalNode = None
+        self.up : InternalNode = None
+        self.down : InternalNode = None
+    
+    def toString(self,tab) -> str:
+        cadena = ("\t" * tab) + f"-----NODO ({self.row}, {self.column})---\n"
+        cadena += ("\t" * tab) + f"Valor: {self.value}\n"
+        if self.right != None:
+            cadena += self.right.toString(tab + 1)
+        return cadena;
