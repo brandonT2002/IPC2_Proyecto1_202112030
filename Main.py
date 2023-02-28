@@ -1,44 +1,32 @@
 from Matrix.Matrix import SparseMatrix
 from Algorithm.Algorithm import Algorithm
 
-m = SparseMatrix()
-#organismos 1 - verde
-m.insert(1,4,1)
-m.insert(2,2,1)
-m.insert(6,2,1)
-m.insert(9,3,1)
+a = Algorithm(SparseMatrix())
 
-#organismos 2 - amarillo
-m.insert(2,3,2)
-m.insert(2,4,2)
-m.insert(3,3,2)
-m.insert(4,4,2)
-m.insert(5,2,2)
-m.insert(5,3,2)
-m.insert(5,4,2)
-m.insert(7,3,2)
+a.matrix.insert(10,10,1)
+a.matrix.insert(10,11,1)
+a.matrix.insert(10,12,1)
+a.matrix.insert(10,13,1)
+a.matrix.insert(11,10,1)
+a.matrix.insert(11,11,1)
+a.matrix.insert(11,12,1)
 
-#organismos 3 - azul
-m.insert(3,2,3)
-m.insert(3,2,3)
-m.insert(4,2,3)
-m.insert(4,3,3)
-m.insert(6,3,3)
-m.insert(8,2,3)
-m.insert(8,3,3)
-m.insert(8,4,3)
-m.insert(8,5,3)
+a.matrix.insert(9,11,3)
+a.matrix.insert(9,12,3)
+
+a.matrix.insert(12,11,2)
+a.matrix.insert(12,12,2)
+
+#a.matrix.insert(3,1,2)
 
 print('\nOriginal')
-m.print()
-a = Algorithm(m)
+a.matrix.print()
 
-m.insert(2,5,2)
+
+#a.matrix.insert(9,10,3)
+a.matrix.insert(3,3,1)
 print('\nNuevo')
-m.print()
-
-node2 = m.searchNode(2,5)
+a.matrix.print()
 
 print()
-a.evaluateToEat(node2)
-m.print()
+a.evaluateToEat(a.matrix.searchNode(3,3))

@@ -304,8 +304,9 @@ class Algorithm:
             self.last_DL = self.lastCell_DL(node.row + 1,node.column - 1,node.value)
 
         if not self.last_R and not self.last_L and not self.last_U and not self.last_D and not self.last_UR and not self.last_UL and not self.last_DR and not self.last_DL:
-            print('No Prospera')
-            self.matrix.unbindNode(node.row,node.column)
+            print('\nNo Prospera\n')
+            self.matrix.unbindNode(node)
+            self.matrix.print()
             return
 
         if self.last_R:

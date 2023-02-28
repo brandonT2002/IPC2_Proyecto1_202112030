@@ -4,9 +4,8 @@ from Algorithm.Algorithm import Algorithm
 from Matrix.Matrix import SparseMatrix
 
 class Read:
-    def __init__(self) -> None:
-        self.m = SparseMatrix()
-        self.algorithm = Algorithm(self.m)
+    def __init__(self,algorithm) -> None:
+        self.algorithm : Algorithm = algorithm
 
     def readFile(self,routeFile):
         self.tree = ET.parse(routeFile)
@@ -24,5 +23,5 @@ class Read:
             for livingCell in cell:
                 llSamp.last.sample.liveCells.insertCell(Cell(livingCell[0].text,livingCell[1].text,llOrg.validateStatement(livingCell[2].text)))
 
-                self.m.insert(int(livingCell[0].text),int(livingCell[1].text),int(llOrg.validateStatement(livingCell[2].text)))
+                self.algorithm.matrix.insert(int(livingCell[0].text),int(livingCell[1].text),llOrg.validateStatement(livingCell[2].text))
         return llSamp

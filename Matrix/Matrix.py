@@ -112,14 +112,18 @@ class SparseMatrix:
             currentR = currentR.next
         return None
 
-    def unbindNode(self,row,column):
+    def unbindNode(self,node : InternalNode):
+        if not node.up or not node.left:
+            self.unbindC(node)
+            self.unbindR(node)
+            return
         currentR : HeaderNode = self.accessR.first
-        currentC : InternalNode
+        currentC : InternalNode = None
         while currentR:
-            if currentR.index == row:
+            if currentR.index == node.row:
                 currentC = currentR.access
                 while currentC:
-                    if currentC.column == column:
+                    if currentC.column == node.column:
                         if currentC.right:
                             currentC.right.left = None
                         if currentC.left:
@@ -132,3 +136,37 @@ class SparseMatrix:
                     currentC = currentC.right
             currentR = currentR.next
         return False
+    
+    def unbindC(self,node):
+        currentC : HeaderNode = self.accessC.first
+        if not node.up:
+            while currentC:
+                if currentC.index == node.column:
+                    if node.down:
+                        currentC.access = node.down
+                    else:
+                        if currentC.index == self.accessC.first.index:
+                            self.accessC.first = self.accessC.first.next
+                        else:
+                            currentC.previous.next = currentC.next
+                            if currentC.next:
+                                currentC.next.previous = currentC.previous
+                    return
+                currentC = currentC.next
+    
+    def unbindR(self,node):
+        currentR : HeaderNode = self.accessR.first
+        if not node.left:
+            while currentR:
+                if currentR.index == node.row:
+                    if node.right:
+                        currentR.access = node.right
+                    else:
+                        if currentR.index == self.accessR.first.index:
+                            self.accessR.first = self.accessR.first.next
+                        else:
+                            currentR.previous.next = currentR.next
+                            if currentR.next:
+                                currentR.next.previous = currentR.previous
+                    return
+                currentR = currentR.next

@@ -2,10 +2,15 @@ import easygui as eg
 from readFile import Read
 from Nodes.LinkedListOrganism import LinkedListOrganism
 from Nodes.LinkedListSample import LinkedListSample
+from Algorithm.Algorithm import Algorithm
+from Matrix.Matrix import SparseMatrix
 
 class Menu:
     def __init__(self):
-        self.read = Read()
+        self.algorithm = Algorithm(SparseMatrix())
+        self.read = Read(self.algorithm)
+        self.llOrg = None
+        self.llSamp = None
 
     def menu(self):
         file = False
@@ -19,8 +24,8 @@ class Menu:
                     try:
                         file = eg.fileopenbox()
                         self.read.readFile(file)
-                        llOrg : LinkedListOrganism = self.read.getOrganismList(LinkedListOrganism())
-                        llSamp : LinkedListSample = self.read.getSamplesList(LinkedListSample(),llOrg)
+                        self.llOrg : LinkedListOrganism = self.read.getOrganismList(LinkedListOrganism())
+                        self.llSamp : LinkedListSample = self.read.getSamplesList(LinkedListSample(),self.llOrg)
                         print('Archivo cargado exitosamente')
                     except:
                         print('Ocurrió un error :(')
@@ -28,7 +33,7 @@ class Menu:
                     print('opcion2')
                 elif option == '3':
                     if file:
-                        self.read.m.print()
+                        self.algorithm.matrix.print()
                         self.addOrganism()
                     else:
                         print('No se ha cargado ningún archivo')
@@ -46,14 +51,18 @@ class Menu:
         while True:
             option = input('\nDesea ingresar un orgamismo (s/n)? ')
             if option == 's':
-                x = int(input('PosX: '))
-                y = int(input('PosY: '))
-                value = int(input('Tipo de Organismo: '))
-                print()
-                self.read.m.insert(x,y,value)
-                self.read.m.print()
-                nodo = self.read.m.searchNode(x,y)
-                self.read.algorithm.evaluateToEat(nodo)
+                while True:
+                    x = input('PosX: ')
+                    y = input('PosY: ')
+                    if x.isdigit() and y.isdigit():
+                        value = input('Tipo de Organismo: ')
+                        print()
+                        self.algorithm.matrix.insert(int(x),int(y),value)
+                        self.algorithm.matrix.print()
+                        self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(x),int(y)))
+                        break
+                    else:
+                        print('Valores incorrectos')
             elif option == 'n':
                 break
             else:

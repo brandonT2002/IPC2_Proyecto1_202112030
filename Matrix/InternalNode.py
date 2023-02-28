@@ -1,5 +1,5 @@
 class InternalNode:
-    def __init__(self,row,column,value : int):
+    def __init__(self,row,column,value):
         self.value = value
         self.row = row
         self.column = column
