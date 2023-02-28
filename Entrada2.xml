@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<datosMarte>
+    <listaOrganismos>
+        <organismo>
+            <codigo>1</codigo>
+            <nombre>Organismo Metamorfo</nombre>
+        </organismo>
+        <organismo>
+            <codigo>2</codigo>
+            <nombre>Organismo reptiliano marciano</nombre>
+        </organismo>
+        <organismo>
+            <codigo>3</codigo>
+            <nombre>Organismo carnivoro</nombre>
+        </organismo>
+    </listaOrganismos>
+    <listadoMuestras>
+        <muestra>
+            <codigo>A001</codigo>
+            <descripcion>Colonia controlada marciana NZ1</descripcion>
+            <filas>20</filas>
+            <columnas>25</columnas>
+            <listadoCeldasVivas>
+                <celdaViva>
+                    <fila>10</fila>
+                    <columna>10</columna>
+                    <codigoOrganismo>1</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>10</fila>
+                    <columna>11</columna>
+                    <codigoOrganismo>1</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>10</fila>
+                    <columna>12</columna>
+                    <codigoOrganismo>1</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>10</fila>
+                    <columna>13</columna>
+                    <codigoOrganismo>1</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>11</fila>
+                    <columna>10</columna>
+                    <codigoOrganismo>1</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>11</fila>
+                    <columna>11</columna>
+                    <codigoOrganismo>1</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>11</fila>
+                    <columna>12</columna>
+                    <codigoOrganismo>1</codigoOrganismo>
+                </celdaViva>
+
+                <celdaViva>
+                    <fila>9</fila>
+                    <columna>11</columna>
+                    <codigoOrganismo>3</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>9</fila>
+                    <columna>12</columna>
+                    <codigoOrganismo>3</codigoOrganismo>
+                </celdaViva>
+
+
+                <celdaViva>
+                    <fila>12</fila>
+                    <columna>11</columna>
+                    <codigoOrganismo>2</codigoOrganismo>
+                </celdaViva>
+                <celdaViva>
+                    <fila>12</fila>
+                    <columna>12</columna>
+                    <codigoOrganismo>2</codigoOrganismo>
+                </celdaViva>
+
+            </listadoCeldasVivas>
+        </muestra>
+    </listadoMuestras>
+</datosMarte>
