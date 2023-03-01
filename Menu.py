@@ -3,17 +3,20 @@ from readFile import Read
 from Nodes.LinkedListOrganism import LinkedListOrganism
 from Nodes.LinkedListSample import LinkedListSample
 from Algorithm.Algorithm import Algorithm
+from Algorithm.Graph import Graph
 from Matrix.Matrix import SparseMatrix
 
 class Menu:
     def __init__(self):
+        self.initObjects()
+
+    def initObjects(self):
         self.algorithm = Algorithm(SparseMatrix())
         self.read = Read(self.algorithm)
-        self.llOrg = None
-        self.llSamp = None
+        self.llOrg = LinkedListOrganism()
+        self.llSamp = LinkedListSample()
 
     def menu(self):
-        file = False
         while True:
             print()
             self.options()
@@ -24,17 +27,17 @@ class Menu:
                     try:
                         file = eg.fileopenbox()
                         self.read.readFile(file)
-                        self.llOrg : LinkedListOrganism = self.read.getOrganismList(LinkedListOrganism())
-                        self.llSamp : LinkedListSample = self.read.getSamplesList(LinkedListSample(),self.llOrg)
+                        self.llOrg : LinkedListOrganism = self.read.getOrganismList(self.llOrg)
+                        self.llSamp : LinkedListSample = self.read.getSamplesList(self.llSamp,self.llOrg)
                         print('Archivo cargado exitosamente')
                     except:
                         print('Ocurrió un error :(')
                 elif option == '2':
                     print('opcion2')
                 elif option == '3':
-                    if file:
+                    if self.llOrg.first and self.llSamp.first:
                         self.algorithm.matrix.print()
-                        self.addOrganism()
+                        self.addOrganism(self.algorithm.matrix)
                     else:
                         print('No se ha cargado ningún archivo')
                 elif option == '4':
@@ -48,19 +51,26 @@ class Menu:
                 print('Ingrese solo números')
 
     def addOrganism(self):
+        graph = Graph()
         while True:
             option = input('\nDesea ingresar un orgamismo (s/n)? ')
             if option == 's':
                 while True:
-                    x = input('PosX: ')
-                    y = input('PosY: ')
-                    if x.isdigit() and y.isdigit():
+                    row = input('Fila: ')
+                    column = input('Columna: ')
+                    if row.isdigit() and column.isdigit():
                         value = input('Tipo de Organismo: ')
-                        print()
-                        self.algorithm.matrix.insert(int(x),int(y),value)
-                        self.algorithm.matrix.print()
-                        self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(x),int(y)))
-                        break
+                        if self.algorithm.matrix.insertNew(int(row),int(column),value):
+                            print()
+                            self.algorithm.matrix.insert(int(row),int(column),value)
+                            graph.setOrganism(self.llOrg)
+                            graph1 = graph.getMatrixI(self.algorithm.matrix,int(row),int(column))
+                            self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(row),int(column)))
+                            graph2 = graph.getMatrixF(self.algorithm.matrix)
+                            graph.getDot(graph1,graph2)
+                            break
+                        else:
+                            print('No se pueden agregar organismos en celdas vivas')
                     else:
                         print('Valores incorrectos')
             elif option == 'n':

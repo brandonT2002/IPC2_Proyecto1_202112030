@@ -1,8 +1,9 @@
 from Nodes.LinkedListCell import LinkedListCell
 class Organism:
-    def __init__(self,code,name):
+    def __init__(self,code,name,color):
         self.code = code
         self.name = name
+        self.color = color
 
 class Sample:
     def __init__(self,code,description,row,column):

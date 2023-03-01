@@ -7,6 +7,12 @@ class SparseMatrix:
         self.accessR = HeaderList()
         self.accessC = HeaderList()
 
+    def insertNew(self,row,column,value):
+        if self.searchNode(row,column):
+            return False
+        self.insert(row,column,value)
+        return True
+
     def insert(self,row,column,value):
         if not self.accessR.isHearIndex(row):
             self.accessR.add(row)
@@ -116,7 +122,6 @@ class SparseMatrix:
         if not node.up or not node.left:
             self.unbindC(node)
             self.unbindR(node)
-            return
         currentR : HeaderNode = self.accessR.first
         currentC : InternalNode = None
         while currentR:
@@ -125,13 +130,13 @@ class SparseMatrix:
                 while currentC:
                     if currentC.column == node.column:
                         if currentC.right:
-                            currentC.right.left = None
+                            currentC.right.left = currentC.left
                         if currentC.left:
-                            currentC.left.right = None
+                            currentC.left.right = currentC.right
                         if currentC.down:
-                            currentC.down.up = None
+                            currentC.down.up = currentC.up
                         if currentC.up:
-                            currentC.up.down = None
+                            currentC.up.down = currentC.down
                         return True
                     currentC = currentC.right
             currentR = currentR.next

@@ -306,45 +306,28 @@ class Algorithm:
         if not self.last_R and not self.last_L and not self.last_U and not self.last_D and not self.last_UR and not self.last_UL and not self.last_DR and not self.last_DL:
             print('\nNo Prospera\n')
             self.matrix.unbindNode(node)
-            self.matrix.print()
             return
 
         if self.last_R:
-            print('\nComer Org Der')
             self.eatOrganisms_R(node,self.last_R,node.value)
-            self.matrix.print()
 
         if self.last_L:
-            print('\nComer Org Izq')
             self.eatOrganisms_L(node,self.last_L,node.value)
-            self.matrix.print()
 
         if self.last_U:
-            print('\nComer Org Arr')
             self.eatOrganisms_U(node,self.last_U,node.value)
-            self.matrix.print()
 
         if self.last_D:
-            print('\nComer Org Abj')
             self.eatOrganisms_D(node,self.last_D,node.value)
-            self.matrix.print()
 
         if self.last_UR:
-            print('\nComer Org ArDer')
             self.eatOrganisms_UR(node.row,node.column,self.last_UR.row,self.last_UR.column,node.value)
-            self.matrix.print()
 
         if self.last_UL:
-            print('\nComer Org ArIzq')
             self.eatOrganisms_UL(node.row,node.column,self.last_UL.row,self.last_UL.column,node.value)
-            self.matrix.print()
 
         if self.last_DR:
-            print('\nComer Org AbDer')
             self.eatOrganisms_DR(node.row,node.column,self.last_DR.row,self.last_DR.column,node.value)
-            self.matrix.print()
 
         if self.last_DL:
-            print('\nComer Org AbIzq')
             self.eatOrganisms_DL(node.row,node.column,self.last_DL.row,self.last_DL.column,node.value)
-            self.matrix.print()
