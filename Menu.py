@@ -59,7 +59,7 @@ class Menu:
                 while True:
                     row = input('Fila: ')
                     column = input('Columna: ')
-                    if row.isdigit() and column.isdigit():
+                    if row.isdigit() and column.isdigit() and (int(row) > 0 or int(column) > 0):
                         value = input('Tipo de Organismo: ')
                         if self.algorithm.matrix.insertNew(int(row),int(column),value):
                             print()
