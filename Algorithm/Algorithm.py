@@ -269,3 +269,65 @@ class Algorithm:
             if node != None:
                 return self.lastCell_DL(row + 1, column - 1, idOrganism)
         return None
+    
+    def evaluateToEat(self,node):
+        self.last_R = None
+        self.last_L = None
+        self.last_U = None
+        self.last_D = None
+        self.last_UR = None
+        self.last_UL = None
+        self.last_DR = None
+        self.last_DL = None
+        if node.right != None and node.column == node.right.column - 1:
+            self.last_R = self.lastCell_R(node.right,node.value)
+
+        if node.left != None and node.column == node.left.column + 1:
+            self.last_L = self.lastCell_L(node.left,node.value)
+
+        if node.up != None and node.row == node.up.row + 1:
+            self.last_U = self.lastCell_U(node.up,node.value)
+
+        if node.down != None and node.row == node.down.row - 1:
+            self.last_D = self.lastCell_D(node.down,node.value)
+
+        if self.matrix.searchNode(node.row,node.column) != None and self.matrix.searchNode(node.row - 1,node.column + 1) != None:
+            self.last_UR = self.lastCell_UR(node.row - 1,node.column + 1,node.value)
+
+        if self.matrix.searchNode(node.row,node.column) != None and self.matrix.searchNode(node.row - 1,node.column - 1) != None:
+            self.last_UL = self.lastCell_UL(node.row - 1,node.column - 1,node.value)
+
+        if self.matrix.searchNode(node.row,node.column) != None and self.matrix.searchNode(node.row + 1,node.column + 1) != None:
+            self.last_DR = self.lastCell_DR(node.row + 1,node.column + 1,node.value)
+
+        if self.matrix.searchNode(node.row,node.column) != None and self.matrix.searchNode(node.row + 1,node.column - 1) != None:
+            self.last_DL = self.lastCell_DL(node.row + 1,node.column - 1,node.value)
+
+        if not self.last_R and not self.last_L and not self.last_U and not self.last_D and not self.last_UR and not self.last_UL and not self.last_DR and not self.last_DL:
+            print('\nNo Prospera\n')
+            self.matrix.unbindNode(node)
+            return
+
+        if self.last_R:
+            self.eatOrganisms_R(node,self.last_R,node.value)
+
+        if self.last_L:
+            self.eatOrganisms_L(node,self.last_L,node.value)
+
+        if self.last_U:
+            self.eatOrganisms_U(node,self.last_U,node.value)
+
+        if self.last_D:
+            self.eatOrganisms_D(node,self.last_D,node.value)
+
+        if self.last_UR:
+            self.eatOrganisms_UR(node.row,node.column,self.last_UR.row,self.last_UR.column,node.value)
+
+        if self.last_UL:
+            self.eatOrganisms_UL(node.row,node.column,self.last_UL.row,self.last_UL.column,node.value)
+
+        if self.last_DR:
+            self.eatOrganisms_DR(node.row,node.column,self.last_DR.row,self.last_DR.column,node.value)
+
+        if self.last_DL:
+            self.eatOrganisms_DL(node.row,node.column,self.last_DL.row,self.last_DL.column,node.value)
