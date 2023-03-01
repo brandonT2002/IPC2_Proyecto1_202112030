@@ -42,9 +42,9 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 </tr><tr><td BGCOLOR="white" width="60" height="60" border="0">4</td><td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#FFF2CC" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#FFF2CC" width="60" height="60" border="5"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -55,8 +55,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 </tr><tr><td BGCOLOR="white" width="60" height="60" border="0">5</td><td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -67,9 +67,9 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 </tr><tr><td BGCOLOR="white" width="60" height="60" border="0">6</td><td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -85,8 +85,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#C9DAF8" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D0E0E3" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -98,8 +98,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D0E0E3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#C9DAF8" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -112,8 +112,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D0E0E3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#C9DAF8" width="60" height="60" border="1"></td>
 <td BGCOLOR="#FCE5CD" width="60" height="60" border="1"></td>
 <td BGCOLOR="#FCE5CD" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -151,7 +151,7 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="#FCE5CD" width="60" height="60" border="5"></td>
+<td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="#F4CCCC" width="60" height="60" border="1"></td>
 <td BGCOLOR="#F4CCCC" width="60" height="60" border="1"></td>
@@ -199,9 +199,9 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 </tr><tr><td BGCOLOR="white" width="60" height="60" border="0">4</td><td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#FFF2CC" width="60" height="60" border="1"></td>
+<td BGCOLOR="#FFF2CC" width="60" height="60" border="1"></td>
+<td BGCOLOR="#FFF2CC" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -212,8 +212,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 </tr><tr><td BGCOLOR="white" width="60" height="60" border="0">5</td><td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -224,9 +224,9 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 </tr><tr><td BGCOLOR="white" width="60" height="60" border="0">6</td><td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D9EAD3" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -242,8 +242,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#C9DAF8" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D0E0E3" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -255,8 +255,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D0E0E3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#C9DAF8" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -269,8 +269,8 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="white" width="60" height="60" border="1"></td>
+<td BGCOLOR="#D0E0E3" width="60" height="60" border="1"></td>
+<td BGCOLOR="#C9DAF8" width="60" height="60" border="1"></td>
 <td BGCOLOR="#FCE5CD" width="60" height="60" border="1"></td>
 <td BGCOLOR="#FCE5CD" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -284,7 +284,7 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="#E6B8AF" width="60" height="60" border="1"></td>
-<td BGCOLOR="#FCE5CD" width="60" height="60" border="1"></td>
+<td BGCOLOR="#E6B8AF" width="60" height="60" border="1"></td>
 <td BGCOLOR="#E6B8AF" width="60" height="60" border="1"></td>
 <td BGCOLOR="#E6B8AF" width="60" height="60" border="1"></td>
 </tr><tr><td BGCOLOR="white" width="60" height="60" border="0">11</td><td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -296,7 +296,7 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="#FCE5CD" width="60" height="60" border="1"></td>
+<td BGCOLOR="#E6B8AF" width="60" height="60" border="1"></td>
 <td BGCOLOR="#E6B8AF" width="60" height="60" border="1"></td>
 <td BGCOLOR="#E6B8AF" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
@@ -308,7 +308,7 @@ matrizInicial [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
-<td BGCOLOR="#FCE5CD" width="60" height="60" border="1"></td>
+<td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="white" width="60" height="60" border="1"></td>
 <td BGCOLOR="#F4CCCC" width="60" height="60" border="1"></td>
 <td BGCOLOR="#F4CCCC" width="60" height="60" border="1"></td>
@@ -323,6 +323,18 @@ organismos [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="0" CELLSP
 </tr>
 <tr>
 <td BGCOLOR="#FCE5CD" width="60" height="60">Organismo carnivoro - SCP191</td>
+</tr>
+<tr>
+<td BGCOLOR="#FFF2CC" width="60" height="60">A - 1</td>
+</tr>
+<tr>
+<td BGCOLOR="#D9EAD3" width="60" height="60">B - 2</td>
+</tr>
+<tr>
+<td BGCOLOR="#D0E0E3" width="60" height="60">C - 3</td>
+</tr>
+<tr>
+<td BGCOLOR="#C9DAF8" width="60" height="60">D - 4</td>
 </tr>
 </TABLE>>];
 }

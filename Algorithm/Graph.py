@@ -37,11 +37,11 @@ class Graph:
             current = current.next
         dot += '\n</TABLE>>];'
         dot += '\n}'
-        with open('Dot/MatrizOriginal.txt','w',encoding='utf-8') as report:
+        with open('Dot/Organismos.txt','w',encoding='utf-8') as report:
             report.write(dot)
 
-        os.system('dot -Tpdf Dot/MatrizOriginal.txt -o Dot/MatrizOriginal.pdf')
-        webbrowser.open('Dot\MatrizOriginal.pdf')
+        os.system('dot -Tpdf Dot/Organismos.txt -o Dot/Organismos.pdf')
+        webbrowser.open('Dot\Organismos.pdf')
 
     def sparseMatrix(self,organisms,matrix : SparseMatrix):
         temp = SparseMatrix()

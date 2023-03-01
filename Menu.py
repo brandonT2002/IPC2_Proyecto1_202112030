@@ -37,7 +37,7 @@ class Menu:
                 elif option == '3':
                     if self.llOrg.first and self.llSamp.first:
                         self.algorithm.matrix.print()
-                        self.addOrganism(self.algorithm.matrix)
+                        self.addOrganism()
                     else:
                         print('No se ha cargado ningún archivo')
                 elif option == '4':
