@@ -52,7 +52,7 @@ class Menu:
 
     def addOrganism(self):
         while True:
-            option = input('\nDesea ingresar un orgamismo (s/n)? ')
+            option = input('\n¿Desea ingresar un orgamismo? (s/n): ')
             if option == 's':
                 self.graph.setOrganism(self.llOrg)
                 self.graph.getDot('Muestra',self.graph.getMatrixI(self.algorithm.matrix))
@@ -75,7 +75,12 @@ class Menu:
                     else:
                         print('Valores incorrectos')
             elif option == 'n':
-                break
+                option = input('\n¿Generar archivo XML? (s/n)')
+                if option == 's':
+                    print('generando...')
+                    break
+                else:
+                    break
             else:
                 print('Opción invalida')
 
