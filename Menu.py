@@ -15,6 +15,7 @@ class Menu:
         self.read = Read(self.algorithm)
         self.llOrg = LinkedListOrganism()
         self.llSamp = LinkedListSample()
+        self.graph = Graph()
 
     def menu(self):
         while True:
@@ -36,7 +37,6 @@ class Menu:
                     print('opcion2')
                 elif option == '3':
                     if self.llOrg.first and self.llSamp.first:
-                        self.algorithm.matrix.print()
                         self.addOrganism()
                     else:
                         print('No se ha cargado ningún archivo')
@@ -51,10 +51,11 @@ class Menu:
                 print('Ingrese solo números')
 
     def addOrganism(self):
-        graph = Graph()
         while True:
             option = input('\nDesea ingresar un orgamismo (s/n)? ')
             if option == 's':
+                self.graph.setOrganism(self.llOrg)
+                self.graph.getDot('Muestra',self.graph.getMatrixI(self.algorithm.matrix))
                 while True:
                     row = input('Fila: ')
                     column = input('Columna: ')
@@ -63,11 +64,11 @@ class Menu:
                         if self.algorithm.matrix.insertNew(int(row),int(column),value):
                             print()
                             self.algorithm.matrix.insert(int(row),int(column),value)
-                            graph.setOrganism(self.llOrg)
-                            graph1 = graph.getMatrixI(self.algorithm.matrix,int(row),int(column))
+                            self.graph.setOrganism(self.llOrg)
+                            graph1 = self.graph.getMatrixI(self.algorithm.matrix,int(row),int(column))
                             self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(row),int(column)))
-                            graph2 = graph.getMatrixF(self.algorithm.matrix)
-                            graph.getDot(graph1,graph2)
+                            graph2 = self.graph.getMatrixF(self.algorithm.matrix)
+                            self.graph.getDot('Resultado',graph1,graph2)
                             break
                         else:
                             print('No se pueden agregar organismos en celdas vivas')

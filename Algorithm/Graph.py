@@ -25,10 +25,13 @@ class Graph:
         dot += '</TABLE>>];'
         return dot
 
-    def getDot(self,dotI,dotF):
+    def getDot(self,name,dotI,dotF = None):
         dot = 'digraph html {\n'
 
-        dot += dotI + dotF
+        dot += dotI
+
+        if dotF:
+            dot += dotF
 
         dot += '\norganismos [shape=none, margin=0, label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5" CELLPADDING="20">'
         current = self.organisms.first
@@ -37,11 +40,12 @@ class Graph:
             current = current.next
         dot += '\n</TABLE>>];'
         dot += '\n}'
-        with open('Dot/Organismos.txt','w',encoding='utf-8') as report:
+
+        with open(f'Dot/{name}.txt','w',encoding='utf-8') as report:
             report.write(dot)
 
-        os.system('dot -Tpdf Dot/Organismos.txt -o Dot/Organismos.pdf')
-        webbrowser.open('Dot\Organismos.pdf')
+        os.system(f'dot -Tpdf Dot/{name}.txt -o Dot/{name}.pdf')
+        webbrowser.open(f'Dot\{name}.pdf')
 
     def sparseMatrix(self,organisms,matrix : SparseMatrix):
         temp = SparseMatrix()
