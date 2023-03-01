@@ -270,6 +270,7 @@ class Algorithm:
                 return self.lastCell_DL(row + 1, column - 1, idOrganism)
         return None
     
+    # validaciones para comer organismos
     def evaluateToEat(self,node):
         self.last_R = None
         self.last_L = None
@@ -331,3 +332,60 @@ class Algorithm:
 
         if self.last_DL:
             self.eatOrganisms_DL(node.row,node.column,self.last_DL.row,self.last_DL.column,node.value)
+
+    # funciones para buscar organismos hermanos para poder prosperar
+    def live_R(self,currentC : InternalNode,idOrganism):
+        # si a la derecha hay algo
+            # si está en una columna consecutiva
+                # si es de diferente tipo
+                    # retorna true
+                # retorna llamada recursiva enviando nodo derecha
+        # retorna falso
+        if currentC.right:
+            if currentC.column == currentC.right.column - 1:
+                if currentC.right.value != idOrganism:
+                    return True
+                return self.live_R(currentC.right,idOrganism)
+        return False
+    
+    def live_L(self,currentC : InternalNode,idOrganism):
+        # si a la izquierda hay algo
+            # si está en una columna consecutiva
+                # si es de diferente tipo
+                    # retorna true
+                # retorna llamada recursiva enviando nodo izquierda
+        # retorna falso
+        if currentC.left:
+            if currentC.column == currentC.left.column + 1:
+                if currentC.left.value != idOrganism:
+                    return True
+                return self.live_L(currentC.left,idOrganism)
+        return False
+    
+    def live_U(self,currentC : InternalNode,idOrganism):
+        # si arriba hay algo
+            # si está en una fila consecutiva
+                # si es de diferente tipo
+                    # retorna true
+                # retorna llamada recursiva enviando nodo arriba
+        # retorna falso
+        if currentC.up:
+            if currentC.row == currentC.up.row + 1:
+                if currentC.up.value != idOrganism:
+                    return True
+                return self.live_U(currentC.up,idOrganism)
+        return False
+    
+    def Live_D(self,currentC : InternalNode,idOrganism):
+        # si abajo hay algo
+            # si está en una fila consecutiva
+                # si es de diferente tipo
+                    # retorna true
+                # retorna llamada recursiva enviando nodo abajo
+        # retorna falso
+        if currentC.down:
+            if currentC.row == currentC.down.row - 1:
+                if currentC.down.value != idOrganism:
+                    return True
+                return self.Live_D(currentC.down,idOrganism)
+        return False

@@ -1,5 +1,4 @@
 from Matrix.Matrix import SparseMatrix
-from Matrix.HeaderNode import HeaderNode
 from Matrix.InternalNode import InternalNode
 from Nodes.LinkedListOrganism import LinkedListOrganism
 import os
@@ -41,11 +40,11 @@ class Graph:
         dot += '\n</TABLE>>];'
         dot += '\n}'
 
-        with open(f'Dot/{name}.txt','w',encoding='utf-8') as report:
+        with open(f'Pdf/{name}.txt','w',encoding='utf-8') as report:
             report.write(dot)
 
-        os.system(f'dot -Tpdf Dot/{name}.txt -o Dot/{name}.pdf')
-        webbrowser.open(f'Dot\{name}.pdf')
+        os.system(f'dot -Tpdf Pdf/{name}.txt -o Pdf/{name}.pdf')
+        webbrowser.open(f'Pdf\{name}.pdf')
 
     def sparseMatrix(self,organisms,matrix : SparseMatrix):
         temp = SparseMatrix()
@@ -85,5 +84,5 @@ class Graph:
             if value == currentO.organism.code:
                 return currentO.organism.color
             elif value == 0:
-                return "white"
+                return 'white'
             currentO = currentO.next
