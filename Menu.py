@@ -4,6 +4,7 @@ from Nodes.LinkedListOrganism import LinkedListOrganism
 from Nodes.LinkedListSample import LinkedListSample
 from Algorithm.Algorithm import Algorithm
 from Algorithm.Graph import Graph
+from Algorithm.Output import Output
 from Matrix.Matrix import SparseMatrix
 
 class Menu:
@@ -77,10 +78,13 @@ class Menu:
             elif option == 'n':
                 option = input('\n¿Generar archivo XML? (s/n)')
                 if option == 's':
-                    print('generando...')
+                    description = input('Descripción de la muestra: ')
+                    Output().getXML(self.llOrg,description,self.algorithm.matrix)
+                    break
+                elif option == 'n':
                     break
                 else:
-                    break
+                    print('Opción invalida')
             else:
                 print('Opción invalida')
 

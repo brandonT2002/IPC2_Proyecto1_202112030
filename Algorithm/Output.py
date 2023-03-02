@@ -46,4 +46,4 @@ class Output:
         # file = ET.ElementTree(root)
 
         file = xml.dom.minidom.parseString(ET.tostring(root)).toprettyxml()
-        return open('Resource/Salida.xml','w').write(file)
+        return open('Output/Salida.xml','w').write(file)
