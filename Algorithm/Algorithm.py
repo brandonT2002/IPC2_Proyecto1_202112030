@@ -1,6 +1,7 @@
 from Matrix.Matrix import SparseMatrix
 from Matrix.InternalNode import InternalNode
 from Matrix.HeaderNode import HeaderNode
+from Nodes.LinkedListPosibilities import LinkedListPosibilities
 
 class Algorithm:
     def __init__(self,matrix):
@@ -344,9 +345,9 @@ class Algorithm:
         if currentC.right:
             if currentC.column == currentC.right.column - 1:
                 if currentC.right.value != idOrganism:
-                    return True
+                    return currentC.right
                 return self.live_R(currentC.right,idOrganism)
-        return False
+        return None
     
     def live_L(self,currentC : InternalNode,idOrganism):
         # si a la izquierda hay algo
@@ -358,9 +359,9 @@ class Algorithm:
         if currentC.left:
             if currentC.column == currentC.left.column + 1:
                 if currentC.left.value != idOrganism:
-                    return True
+                    return currentC.left
                 return self.live_L(currentC.left,idOrganism)
-        return False
+        return None
     
     def live_U(self,currentC : InternalNode,idOrganism):
         # si arriba hay algo
@@ -372,9 +373,9 @@ class Algorithm:
         if currentC.up:
             if currentC.row == currentC.up.row + 1:
                 if currentC.up.value != idOrganism:
-                    return True
+                    return currentC.up
                 return self.live_U(currentC.up,idOrganism)
-        return False
+        return None
     
     def Live_D(self,currentC : InternalNode,idOrganism):
         # si abajo hay algo
@@ -386,38 +387,87 @@ class Algorithm:
         if currentC.down:
             if currentC.row == currentC.down.row - 1:
                 if currentC.down.value != idOrganism:
-                    return True
+                    return currentC.down
                 return self.Live_D(currentC.down,idOrganism)
-        return False
+        return None
     
     def live_UR(self,row,column,idOrganism):
         current = self.matrix.searchNode(row - 1,column + 1)
         if current:
             if current.value != idOrganism:
-                return True
-            return self.live_UR(row - 1,column + 1)
-        return False
+                return current
+            return self.live_UR(row - 1,column + 1,idOrganism)
+        return None
     
     def live_UL(self,row,column,idOrganism):
         current = self.matrix.searchNode(row - 1,column - 1)
         if current:
             if current.value != idOrganism:
-                return True
-            return self.live_UL(row - 1,column - 1)
-        return False
+                return current
+            return self.live_UL(row - 1,column - 1,idOrganism)
+        return None
     
     def live_DR(self,row,column,idOrganism):
         current = self.matrix.searchNode(row + 1,column + 1)
         if current:
             if current.value != idOrganism:
-                return True
-            return self.live_DR(row + 1,column + 1)
-        return False
+                return current
+            return self.live_DR(row + 1,column + 1,idOrganism)
+        return None
     
     def live_DL(self,row,column,idOrganism):
         current = self.matrix.searchNode(row + 1,column - 1)
         if current:
             if current.value != idOrganism:
-                return True
-            return self.live_DL(row + 1,column - 1)
+                return current
+            return self.live_DL(row + 1,column - 1,idOrganism)
+        return None
+    
+    def searchLive(self,idOrganism):
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            currentC = currentR.access
+            while currentC:
+                if currentC.value == idOrganism:
+                    if self.live_R(currentC,idOrganism) or self.live_L(currentC,idOrganism) or self.live_U(currentC,idOrganism) or self.Live_D(currentC,idOrganism) or self.live_UR(currentC.row,currentC.column,idOrganism) or self.live_UL(currentC.row,currentC.column,idOrganism) or self.live_DR(currentC.row,currentC.column,idOrganism) or self.live_DL(currentC.row,currentC.column,idOrganism):
+                        return True
+                currentC = currentC.right
+            currentR = currentR.next
         return False
+
+    def getPosibilities(self,idOrganism) -> LinkedListPosibilities:
+        self.posibilities = LinkedListPosibilities()
+        currentR : HeaderNode = self.matrix.accessR.first
+        currentC : InternalNode
+        while currentR:
+            currentC = currentR.access
+            while currentC:
+                if currentC.value == idOrganism:
+                    coord = self.live_R(currentC,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                    coord = self.live_L(currentC,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                    coord = self.live_U(currentC,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                    coord = self.Live_D(currentC,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                    coord = self.live_UR(currentC.row,currentC.column,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                    coord = self.live_UL(currentC.row,currentC.column,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                    coord = self.live_DR(currentC.row,currentC.column,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                    coord = self.live_DL(currentC.row,currentC.column,idOrganism)
+                    if coord:
+                        self.posibilities.insertCoord(coord.row,coord.column)
+                currentC = currentC.right
+            currentR = currentR.next
+        return self.posibilities
