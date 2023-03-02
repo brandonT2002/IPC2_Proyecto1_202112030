@@ -389,3 +389,35 @@ class Algorithm:
                     return True
                 return self.Live_D(currentC.down,idOrganism)
         return False
+    
+    def live_UR(self,row,column,idOrganism):
+        current = self.matrix.searchNode(row - 1,column + 1)
+        if current:
+            if current.value != idOrganism:
+                return True
+            return self.live_UR(row - 1,column + 1)
+        return False
+    
+    def live_UL(self,row,column,idOrganism):
+        current = self.matrix.searchNode(row - 1,column - 1)
+        if current:
+            if current.value != idOrganism:
+                return True
+            return self.live_UL(row - 1,column - 1)
+        return False
+    
+    def live_DR(self,row,column,idOrganism):
+        current = self.matrix.searchNode(row + 1,column + 1)
+        if current:
+            if current.value != idOrganism:
+                return True
+            return self.live_DR(row + 1,column + 1)
+        return False
+    
+    def live_DL(self,row,column,idOrganism):
+        current = self.matrix.searchNode(row + 1,column - 1)
+        if current:
+            if current.value != idOrganism:
+                return True
+            return self.live_DL(row + 1,column - 1)
+        return False
