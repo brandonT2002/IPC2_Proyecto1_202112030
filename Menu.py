@@ -6,7 +6,6 @@ from Algorithm.Algorithm import Algorithm
 from Algorithm.Graph import Graph
 from Algorithm.Output import Output
 from Matrix.Matrix import SparseMatrix
-import time
 
 class Menu:
     def __init__(self):
