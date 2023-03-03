@@ -6,6 +6,7 @@ from Algorithm.Algorithm import Algorithm
 from Algorithm.Graph import Graph
 from Algorithm.Output import Output
 from Matrix.Matrix import SparseMatrix
+import time
 
 class Menu:
     def __init__(self):
@@ -55,26 +56,7 @@ class Menu:
         while True:
             option = input('\n¿Desea ingresar un orgamismo? (s/n): ')
             if option == 's':
-                self.graph.setOrganism(self.llOrg)
-                self.graph.getDot('Muestra',self.graph.getMatrixI(self.algorithm.matrix))
-                while True:
-                    row = input('Fila: ')
-                    column = input('Columna: ')
-                    if row.isdigit() and column.isdigit() and (int(row) > 0 or int(column) > 0):
-                        value = input('Tipo de Organismo: ')
-                        if self.algorithm.matrix.insertNew(int(row),int(column),value):
-                            print()
-                            self.algorithm.matrix.insert(int(row),int(column),value)
-                            self.graph.setOrganism(self.llOrg)
-                            graph1 = self.graph.getMatrixI(self.algorithm.matrix,int(row),int(column))
-                            self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(row),int(column)))
-                            graph2 = self.graph.getMatrixF(self.algorithm.matrix)
-                            self.graph.getDot('Resultado',graph1,graph2)
-                            break
-                        else:
-                            print('No se pueden agregar organismos en celdas vivas')
-                    else:
-                        print('Valores incorrectos')
+                self.insertOrgasim()
             elif option == 'n':
                 option = input('\n¿Generar archivo XML? (s/n)')
                 if option == 's':
@@ -87,6 +69,27 @@ class Menu:
                     print('Opción invalida')
             else:
                 print('Opción invalida')
+
+    def insertOrgasim(self):
+        self.graph.setOrganism(self.llOrg)
+        self.graph.getDot('Muestra',self.graph.getMatrixI(self.algorithm.matrix))
+        while True:
+            row = input('Fila: ')
+            column = input('Columna: ')
+            if row.isdigit() and column.isdigit() and (int(row) > 0 or int(column) > 0):
+                value = input('Tipo de Organismo: ')
+                if self.algorithm.matrix.insertNew(int(row),int(column),value):
+                    print()
+                    self.graph.setOrganism(self.llOrg)
+                    graph1 = self.graph.getMatrixI(self.algorithm.matrix,int(row),int(column))
+                    self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(row),int(column)))
+                    graph2 = self.graph.getMatrixF(self.algorithm.matrix)
+                    self.graph.getDot('Resultado',graph1,graph2)
+                    break
+                else:
+                    print('No se pueden agregar organismos en celdas vivas')
+            else:
+                print('Valores incorrectos')
 
     def options(self):
         print('╔════════════════════════════════════════════════════════════╗')
