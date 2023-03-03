@@ -43,7 +43,14 @@ class Menu:
                     else:
                         print('No se ha cargado ningún archivo')
                 elif option == '4':
-                    print('opcion4')
+                    if self.llOrg.first and self.llSamp.first:
+                        organism = input('Ingrese el código de Organismo: ')
+                        if self.algorithm.searchLive(organism):
+                            print('Todavía puede prosperar')
+                        else:
+                            print('Ya no puede prosperar')
+                    else:
+                        print('No se ha cargado ningún archivo')
                 elif option == '5':
                     print('¡Hasta pronto!')
                     break
