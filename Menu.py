@@ -51,6 +51,9 @@ class Menu:
                     else:
                         print('No se ha cargado ningún archivo')
                 elif option == '5':
+                    self.initObjects()
+                    print('El sistema ha sido restaurado')
+                elif option == '6':
                     print('¡Hasta pronto!')
                     break
                 else:
@@ -105,7 +108,8 @@ class Menu:
         print('║                  2. ¿Dónde Puede Prosperar?                ║')
         print('║                  3. Colocar Organismos                     ║')
         print('║                  4. ¿Puéde Prosperar?                      ║')
-        print('║                  5. Salir                                  ║')
+        print('║                  5. Limpiar Sistema                        ║')
+        print('║                  6. Salir                                  ║')
         print('║                                                            ║')
         print('╚════════════════════════════════════════════════════════════╝')
 
