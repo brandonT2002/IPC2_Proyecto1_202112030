@@ -40,16 +40,22 @@ class Graph:
         dot += '\n</TABLE>>];'
         dot += '\n}'
 
-        with open(f'Reports/img/{name}.txt','w',encoding='utf-8') as report:
-            report.write(dot)
-
-        os.system(f'dot -Tjpg Reports/img/{name}.txt -o Reports/img/{name}.jpg')
+        if name == 'Muestra':
+            file = open('Reports/js/scriptOrigin.js','wt')
+            text = f"d3.select('#original').graphviz().scale(.6).height(document.getElementById('original').clientWidth).renderDot(`{dot}`)"
+            file.write(text)
+            file.close()
+        else:
+            file = open('Reports/js/scriptResult.js','wt')
+            text = f"d3.select('#resultado').graphviz().scale(.45).height(document.getElementById('resultado').clientWidth).renderDot(`{dot}`)"
+            file.write(text)
+            file.close()
 
         with open(f'Pdf/{name}.txt','w',encoding='utf-8') as report:
             report.write(dot)
 
         os.system(f'dot -Tpdf Pdf/{name}.txt -o Pdf/{name}.pdf')
-        webbrowser.open(f'Pdf\{name}.pdf')
+        # webbrowser.open(f'Pdf\{name}.pdf')
 
     def sparseMatrix(self,organisms,matrix : SparseMatrix):
         temp = SparseMatrix()

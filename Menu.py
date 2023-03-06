@@ -31,6 +31,9 @@ class Menu:
                         self.read.readFile(file)
                         self.llOrg : LinkedListOrganism = self.read.getOrganismList(self.llOrg)
                         self.llSamp : LinkedListSample = self.read.getSamplesList(self.llSamp,self.llOrg)
+
+                        self.graph.setOrganism(self.llOrg)
+                        self.graph.getDot('Muestra',self.graph.getMatrixI(self.algorithm.matrix))
                         print('Archivo cargado exitosamente')
                     except:
                         print('Ocurrió un error :(')
@@ -52,6 +55,15 @@ class Menu:
                         print('No se ha cargado ningún archivo')
                 elif option == '5':
                     self.initObjects()
+                    file = open('Reports/js/scriptOrigin.js','wt')
+                    text = f'd3.select(\'#original\').graphviz().scale(.6).height(document.getElementById(\'original\').innerHTML = "<table><tr><th> No hay muestras cargadas </th></tr></table>")'
+                    file.write(text)
+                    file.close()
+
+                    file = open('Reports/js/scriptResult.js','wt')
+                    text = f'd3.select(\'#resultado\').graphviz().scale(.45).height(document.getElementById(\'resultado\').innerHTML = "<table><tr><th> No se han agregado organismos </th></tr></table>")'
+                    file.write(text)
+                    file.close()
                     print('El sistema ha sido restaurado')
                 elif option == '6':
                     print('¡Hasta pronto!')

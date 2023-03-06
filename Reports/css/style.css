@@ -10,10 +10,21 @@ h1{
     font-family: 'Montserrat', sans-serif;
 }
 
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    background-color: #CFD2CF;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
 .contenedor {
     width: 95%;
     margin: 0 auto;
-    /* background-color: red; */
 }
 
 .muestra {
