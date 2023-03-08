@@ -1,0 +1,1 @@
+d3.select('#original').graphviz().scale(.6).height(document.getElementById('original').innerHTML = "<table><tr><th> No hay muestras cargadas </th></tr></table>")

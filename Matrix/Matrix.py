@@ -13,6 +13,13 @@ class SparseMatrix:
         self.insert(row,column,value)
         return True
 
+    def overWrite(self,row,column,value):
+        node = self.searchNode(row,column)
+        if node:
+            node.value = value
+            return
+        self.insert(row,column,value)
+
     def insert(self,row,column,value):
         if not self.accessR.isHearIndex(row):
             self.accessR.add(row)
@@ -137,11 +144,24 @@ class SparseMatrix:
                             currentC.down.up = currentC.up
                         if currentC.up:
                             currentC.up.down = currentC.down
+                        if currentR.last.column == node.column:
+                            currentR.last = currentR.last.left
+                        self.verifyLastC(node.column,node.row)
                         return True
                     currentC = currentC.right
             currentR = currentR.next
         return False
-    
+
+    def verifyLastC(self,column,row):
+        currentC = self.accessC.first
+        while currentC:
+            if currentC.index == column:
+                if currentC.last.row == row:
+                    currentC.last = currentC.last.up
+                    return True
+            currentC = currentC.next
+        return False
+
     def unbindC(self,node):
         currentC : HeaderNode = self.accessC.first
         if not node.up:

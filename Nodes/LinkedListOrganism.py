@@ -14,6 +14,14 @@ class LinkedListOrganism:
         self.first = NodeOrganism(organism)
         self.last = self.first
 
+    def existOrganism(self,code):
+        current = self.first
+        while current:
+            if current.organism.code == code:
+                return True
+            current = current.next
+        return False
+
     def iterateList(self):
         self.current = self.first
         while self.current:

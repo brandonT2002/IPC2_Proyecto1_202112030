@@ -1,0 +1,1 @@
+d3.select('#resultado').graphviz().scale(.45).height(document.getElementById('resultado').innerHTML = "<table><tr><th> No se han agregado organismos </th></tr></table>")

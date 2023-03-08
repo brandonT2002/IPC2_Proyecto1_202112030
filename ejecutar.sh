@@ -1,3 +1,3 @@
 #!/bin/bash
     clear
-    python Menu.py
+    python Main.py
