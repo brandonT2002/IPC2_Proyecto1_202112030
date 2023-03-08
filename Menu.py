@@ -17,6 +17,7 @@ class Menu:
         self.llOrg = LinkedListOrganism()
         self.llSamp = LinkedListSample()
         self.graph = Graph()
+        self.resetScripts()
 
     def menu(self):
         while True:
@@ -55,17 +56,10 @@ class Menu:
                         print('No se ha cargado ningún archivo')
                 elif option == '5':
                     self.initObjects()
-                    file = open('Reports/js/scriptOrigin.js','wt')
-                    text = f'd3.select(\'#original\').graphviz().scale(.6).height(document.getElementById(\'original\').innerHTML = "<table><tr><th> No hay muestras cargadas </th></tr></table>")'
-                    file.write(text)
-                    file.close()
-
-                    file = open('Reports/js/scriptResult.js','wt')
-                    text = f'd3.select(\'#resultado\').graphviz().scale(.45).height(document.getElementById(\'resultado\').innerHTML = "<table><tr><th> No se han agregado organismos </th></tr></table>")'
-                    file.write(text)
-                    file.close()
+                    self.resetScripts()
                     print('El sistema ha sido restaurado')
                 elif option == '6':
+                    self.resetScripts()
                     print('¡Hasta pronto!')
                     break
                 else:
@@ -79,7 +73,7 @@ class Menu:
             if option == 's':
                 self.insertOrgasim()
             elif option == 'n':
-                option = input('\n¿Generar archivo XML? (s/n)')
+                option = input('\n¿Generar archivo XML? (s/n): ')
                 if option == 's':
                     description = input('Descripción de la muestra: ')
                     Output().getXML(self.llOrg,description,self.algorithm.matrix)
@@ -92,25 +86,40 @@ class Menu:
                 print('Opción invalida')
 
     def insertOrgasim(self):
-        self.graph.setOrganism(self.llOrg)
-        self.graph.getDot('Muestra',self.graph.getMatrixI(self.algorithm.matrix))
         while True:
             row = input('Fila: ')
             column = input('Columna: ')
             if row.isdigit() and column.isdigit() and (int(row) > 0 or int(column) > 0):
                 value = input('Tipo de Organismo: ')
-                if self.algorithm.matrix.insertNew(int(row),int(column),value):
-                    print()
-                    self.graph.setOrganism(self.llOrg)
-                    graph1 = self.graph.getMatrixI(self.algorithm.matrix,int(row),int(column))
-                    self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(row),int(column)))
-                    graph2 = self.graph.getMatrixF(self.algorithm.matrix)
-                    self.graph.getDot('Resultado',graph1,graph2)
-                    break
+                if self.algorithm.exist(value,self.llOrg):
+                    if self.algorithm.matrix.insertNew(int(row),int(column),value):
+                        print()
+                        self.graph.setOrganism(self.llOrg)
+                        graph1 = self.graph.getMatrixI(self.algorithm.matrix,int(row),int(column))
+                        self.algorithm.evaluateToEat(self.algorithm.matrix.searchNode(int(row),int(column)))
+                        graph2 = self.graph.getMatrixF(self.algorithm.matrix)
+                        self.graph.getDot('Resultado',graph1,graph2)
+
+                        self.graph.setOrganism(self.llOrg)
+                        self.graph.getDot('Muestra',self.graph.getMatrixI(self.algorithm.matrix))
+                        break
+                    else:
+                        print('No se pueden agregar organismos en celdas vivas')
                 else:
-                    print('No se pueden agregar organismos en celdas vivas')
+                    print('El tipo de organismo no existe')
             else:
                 print('Valores incorrectos')
+
+    def resetScripts(self):
+        file = open('Reports/js/scriptOrigin.js','wt')
+        text = f'd3.select(\'#original\').graphviz().scale(.6).height(document.getElementById(\'original\').innerHTML = "<table><tr><th> No hay muestras cargadas </th></tr></table>")'
+        file.write(text)
+        file.close()
+
+        file = open('Reports/js/scriptResult.js','wt')
+        text = f'd3.select(\'#resultado\').graphviz().scale(.45).height(document.getElementById(\'resultado\').innerHTML = "<table><tr><th> No se han agregado organismos </th></tr></table>")'
+        file.write(text)
+        file.close()
 
     def options(self):
         print('╔════════════════════════════════════════════════════════════╗')

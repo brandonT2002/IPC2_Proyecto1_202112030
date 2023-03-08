@@ -13,6 +13,13 @@ class SparseMatrix:
         self.insert(row,column,value)
         return True
 
+    def overWrite(self,row,column,value):
+        node = self.searchNode(row,column)
+        if node:
+            node.value = value
+            return
+        self.insert(row,column,value)
+
     def insert(self,row,column,value):
         if not self.accessR.isHearIndex(row):
             self.accessR.add(row)

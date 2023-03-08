@@ -23,13 +23,15 @@ class Output:
         Samp = ET.SubElement(listSamp,'muestra')
         ET.SubElement(Samp,'codigo').text=f'{uuid.uuid4()}'
         ET.SubElement(Samp,'descripcion').text=f'{description}'
-        row = ET.SubElement(Samp,'Filas')
+        row = ET.SubElement(Samp,'filas')
         column = ET.SubElement(Samp,'columnas')
         listLiveCell = ET.SubElement(Samp,'listadoCeldasVivas')
 
         currentR : HeaderNode = matrix.accessR.first
         maxColumn : HeaderNode = matrix.accessC.last
         currentC : InternalNode
+        row.text = str(matrix.accessR.last.index)
+        column.text = str(matrix.accessC.last.index)
         while currentR:
             currentC = currentR.access
             while currentC:
@@ -37,9 +39,6 @@ class Output:
                 ET.SubElement(cell,'fila').text=f'{currentC.row}'
                 ET.SubElement(cell,'columna').text=f'{currentC.column}'
                 ET.SubElement(cell,'codigoOrganismo').text=f'{currentC.value}'
-                if currentC.row == currentR.last.row and currentC.column == maxColumn.last.column:
-                    row.text=f'{currentC.row}'
-                    column.text=f'{currentC.column}'
                 currentC = currentC.right
             currentR = currentR.next
         

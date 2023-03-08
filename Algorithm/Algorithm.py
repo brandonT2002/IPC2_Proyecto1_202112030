@@ -2,6 +2,7 @@ from Matrix.Matrix import SparseMatrix
 from Matrix.InternalNode import InternalNode
 from Matrix.HeaderNode import HeaderNode
 from Nodes.LinkedListPosibilities import LinkedListPosibilities
+from Nodes.LinkedListOrganism import LinkedListOrganism
 
 class Algorithm:
     def __init__(self,matrix):
@@ -434,6 +435,14 @@ class Algorithm:
                         return True
                 currentC = currentC.right
             currentR = currentR.next
+        return False
+
+    def exist(self,idOrganism,listOrganism : LinkedListOrganism):
+        current = listOrganism.first
+        while current:
+            if current.organism.code == idOrganism:
+                return True
+            current = current.next
         return False
 
     def getPosibilities(self,idOrganism) -> LinkedListPosibilities:

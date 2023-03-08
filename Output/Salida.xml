@@ -2,6 +2,18 @@
 <datosMarte>
 	<listaOrganismos>
 		<organismo>
+			<codigo>SCP096</codigo>
+			<nombre>Organismo Metamorfo</nombre>
+		</organismo>
+		<organismo>
+			<codigo>SCP682</codigo>
+			<nombre>Organismo reptiliano marciano</nombre>
+		</organismo>
+		<organismo>
+			<codigo>SCP191</codigo>
+			<nombre>Organismo carnivoro</nombre>
+		</organismo>
+		<organismo>
 			<codigo>1</codigo>
 			<nombre>A</nombre>
 		</organismo>
@@ -17,24 +29,12 @@
 			<codigo>4</codigo>
 			<nombre>D</nombre>
 		</organismo>
-		<organismo>
-			<codigo>SCP096</codigo>
-			<nombre>Organismo Metamorfo</nombre>
-		</organismo>
-		<organismo>
-			<codigo>SCP682</codigo>
-			<nombre>Organismo reptiliano marciano</nombre>
-		</organismo>
-		<organismo>
-			<codigo>SCP191</codigo>
-			<nombre>Organismo carnivoro</nombre>
-		</organismo>
 	</listaOrganismos>
 	<listadoMuestras>
 		<muestra>
-			<codigo>f6552733-9962-4676-a535-c42946460aae</codigo>
-			<descripcion>Nueva muestra</descripcion>
-			<Filas>10</Filas>
+			<codigo>2f904998-ddea-468b-84d2-95bc9858905c</codigo>
+			<descripcion>nueva muestra</descripcion>
+			<filas>12</filas>
 			<columnas>13</columnas>
 			<listadoCeldasVivas>
 				<celdaViva>
@@ -73,9 +73,14 @@
 					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
+					<fila>6</fila>
+					<columna>7</columna>
+					<codigoOrganismo>2</codigoOrganismo>
+				</celdaViva>
+				<celdaViva>
 					<fila>7</fila>
 					<columna>8</columna>
-					<codigoOrganismo>4</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>7</fila>
@@ -90,27 +95,27 @@
 				<celdaViva>
 					<fila>8</fila>
 					<columna>9</columna>
-					<codigoOrganismo>4</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
-					<fila>9</fila>
-					<columna>8</columna>
-					<codigoOrganismo>SCP191</codigoOrganismo>
+					<fila>8</fila>
+					<columna>11</columna>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>9</fila>
 					<columna>9</columna>
-					<codigoOrganismo>SCP191</codigoOrganismo>
+					<codigoOrganismo>3</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>9</fila>
 					<columna>10</columna>
-					<codigoOrganismo>SCP191</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>9</fila>
 					<columna>11</columna>
-					<codigoOrganismo>SCP191</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>9</fila>
@@ -125,7 +130,7 @@
 				<celdaViva>
 					<fila>10</fila>
 					<columna>11</columna>
-					<codigoOrganismo>SCP096</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>10</fila>
@@ -145,22 +150,27 @@
 				<celdaViva>
 					<fila>11</fila>
 					<columna>11</columna>
-					<codigoOrganismo>SCP096</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>11</fila>
 					<columna>12</columna>
-					<codigoOrganismo>SCP096</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>12</fila>
 					<columna>11</columna>
-					<codigoOrganismo>SCP682</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 				<celdaViva>
 					<fila>12</fila>
 					<columna>12</columna>
-					<codigoOrganismo>SCP682</codigoOrganismo>
+					<codigoOrganismo>2</codigoOrganismo>
+				</celdaViva>
+				<celdaViva>
+					<fila>12</fila>
+					<columna>13</columna>
+					<codigoOrganismo>2</codigoOrganismo>
 				</celdaViva>
 			</listadoCeldasVivas>
 		</muestra>
